@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -32,5 +33,27 @@ public class GameBoard : MonoBehaviour
     {
         currentState.ClearAllTiles();
         nextState.ClearAllTiles();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Simulate());
+    }
+
+    private IEnumerator Simulate()
+    {
+        // caching to prevent memory heap consumption - better methods are available
+        var interval = new WaitForSeconds(updateInterval);
+
+        while (enabled)
+        {
+            UpdateState();
+            yield return interval;
+        }
+    }
+
+    private void UpdateState()
+    {
+
     }
 }

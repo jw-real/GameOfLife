@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class GameConfig : MonoBehaviour
 {
@@ -177,6 +178,7 @@ public class GameConfig : MonoBehaviour
 
         PlayerPrefs.SetString("runtime_pattern", json);
         PlayerPrefs.Save();
+        SceneManager.LoadScene("Game of Life");
     }
 
     private string OutputPatternToJson(PatternData data)

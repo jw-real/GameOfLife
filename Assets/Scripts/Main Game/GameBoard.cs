@@ -10,7 +10,6 @@ public class GameBoard : MonoBehaviour
     [SerializeField] private Tilemap nextState;
     [SerializeField] private Tile aliveTile;
     [SerializeField] private Tile deadTile;
-    [SerializeField] private Pattern pattern;
     [SerializeField] private float updateInterval = 0.05f;
 
     private readonly HashSet<Vector3Int> aliveCells = new();
@@ -22,23 +21,48 @@ public class GameBoard : MonoBehaviour
 
     private void Start()
     {
-        SetPattern(pattern);
+        
     }
 
-    private void SetPattern(Pattern pattern) 
+    public void ApplyPattern(PatternData pattern)
     {
         Clear();
 
-        Vector2Int center =  pattern.GetCenter();
+        // Compute center of the selected cells
+        Vector2Int center = ComputeCenter(pattern.selectedCells);
 
-        for (int i = 0; i < pattern.cells.Length; i++)
+        foreach (var cell in pattern.selectedCells)
         {
-            Vector3Int cell = (Vector3Int)(pattern.cells[i] - center);
-            currentState.SetTile((Vector3Int)cell, aliveTile);
-            aliveCells.Add(cell);
+            Vector3Int pos = new Vector3Int(cell.x - center.x, cell.y - center.y, 0);
+
+            currentState.SetTile(pos, aliveTile);
+            aliveCells.Add(pos);
         }
 
         population = aliveCells.Count;
+    }
+
+    private Vector2Int ComputeCenter(List<CellPosition> cells)
+    {
+        if (cells == null || cells.Count == 0)
+            return Vector2Int.zero;
+
+        int minX = int.MaxValue, maxX = int.MinValue;
+        int minY = int.MaxValue, maxY = int.MinValue;
+
+        foreach (var c in cells)
+        {
+            if (c.x < minX) minX = c.x;
+            if (c.x > maxX) maxX = c.x;
+
+            if (c.y < minY) minY = c.y;
+            if (c.y > maxY) maxY = c.y;
+        }
+
+        return new Vector2Int(
+            (minX + maxX) / 2,
+            (minY + maxY) / 2
+        );
     }
 
     private void Clear()

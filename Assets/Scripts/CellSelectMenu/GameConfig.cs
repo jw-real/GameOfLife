@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class GameConfig : MonoBehaviour
 {
@@ -94,10 +95,18 @@ public class GameConfig : MonoBehaviour
         grid.constraintCount = rows;
 
         // Create grid cells
-        for (int i = 0; i < rows * cols; i++)
+        for (int r = 0; r < rows; r++)
         {
-            var btn = Instantiate(buttonPrefab, gridContainer);
-            btn.OnSelectedChanged += HandleButtonSelection;
+            for (int c = 0; c < cols; c++)
+            {
+                var btn = Instantiate(buttonPrefab, gridContainer);
+
+                // Assign grid coordinates
+                btn.x = c;
+                btn.y = r;
+
+                btn.OnSelectedChanged += HandleButtonSelection;
+            }
         }
     }
 
@@ -134,5 +143,44 @@ public class GameConfig : MonoBehaviour
         {
             selectionCounterText.text = remainingSelectable.ToString();
         }
+    }
+
+    private PatternData BuildPatternData()
+    {
+        PatternData data = new PatternData();
+        data.columns = cols;
+        data.rows = rows;
+
+        data.selectedCells = new List<CellPosition>();
+
+        foreach (var btn in selectedButtons)
+        {
+            data.selectedCells.Add(new CellPosition(btn.x, btn.y));
+        }
+        return data;
+    }
+
+    public void ConfirmSelection()
+    {
+        if (selectedButtons.Count != maxSelectable)
+        {
+            Debug.LogWarning("You must select exactly " + maxSelectable + " tiles!");
+            return;
+        }
+
+        Debug.Log("Selection confirmed!");
+        // JSON creation + scene switch goes here later
+        PatternData data = BuildPatternData();
+        string json = OutputPatternToJson(data);
+
+        Debug.Log("Pattern JSON: " + json);
+
+        PlayerPrefs.SetString("runtime_pattern", json);
+        PlayerPrefs.Save();
+    }
+
+    private string OutputPatternToJson(PatternData data)
+    {
+        return JsonUtility.ToJson(data);
     }
 }

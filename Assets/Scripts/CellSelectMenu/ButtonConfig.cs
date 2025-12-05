@@ -6,6 +6,8 @@ public class ButtonConfig : MonoBehaviour
     [SerializeField] private Image img; // The Image component on the button
     [SerializeField] private Color selectedColor = Color.blue;
     [SerializeField] private Color unselectedColor = Color.white;
+    public int x;
+    public int y;
     public System.Action<ButtonConfig> OnSelectedChanged;
 
 
@@ -35,5 +37,6 @@ public class ButtonConfig : MonoBehaviour
     {
         isSelected = false;
         img.color = unselectedColor;
+        OnSelectedChanged?.Invoke(this);
     }
 }

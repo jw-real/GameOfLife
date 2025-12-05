@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 
 public class GameConfig : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameConfig : MonoBehaviour
     [Header("References")]
     public Transform gridContainer;      // The object with GridLayoutGroup
     public ButtonConfig buttonPrefab;    // Your button prefab
+    public TMP_Text selectionCounterText;
+    private int remainingSelectable;
     
     private List<ButtonConfig> selectedButtons = new List<ButtonConfig>();
 
@@ -23,6 +26,8 @@ public class GameConfig : MonoBehaviour
         LoadLevelConfigFromJson();
         ApplyGridStyling();
         BuildGrid();
+        remainingSelectable = maxSelectable;
+        UpdateSelectionUI();
     }
 
     // -------------------------------
@@ -110,10 +115,24 @@ public class GameConfig : MonoBehaviour
             }
 
             selectedButtons.Add(btn);
+            remainingSelectable--;
+            Debug.Log("Remaining Decremented");
         }
         else
         {
             selectedButtons.Remove(btn);
+            remainingSelectable++;
+            Debug.Log("Remaining Incremented");
+        }
+
+        UpdateSelectionUI();
+    }
+ 
+    private void UpdateSelectionUI()
+    {
+        if (selectionCounterText != null)
+        {
+            selectionCounterText.text = remainingSelectable.ToString();
         }
     }
 }

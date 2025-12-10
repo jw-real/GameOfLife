@@ -19,4 +19,3 @@ public class PatternLoader : MonoBehaviour
         gameBoard.ApplyPattern(pattern);
     }
 }
-

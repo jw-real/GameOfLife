@@ -332,14 +332,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd705a7d9ea093208a51e7c5e3bf188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: 4
-  cols: 3
-  maxSelectable: 3
   cellPadding: 4
   cellSpacing: 8
   gridContainer: {fileID: 1883120373}
   buttonPrefab: {fileID: 939518056108484740, guid: a4e1627fbd19ddb14884dae27e2d52dd, type: 3}
   selectionCounterText: {fileID: 1467530796}
+  config: {fileID: 11400000, guid: fbea04d756e13a669a8e804ec569e66d, type: 2}
 --- !u!4 &373339915
 Transform:
   m_ObjectHideFlags: 0

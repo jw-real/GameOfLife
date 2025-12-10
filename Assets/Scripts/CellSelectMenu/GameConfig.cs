@@ -8,10 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class GameConfig : MonoBehaviour
 {
-    [Header("Button Configuration")]
-    public int rows = 4;
-    public int cols = 3;
-    public int maxSelectable = 4;
+    [Header("Grid Styling")]
     public float cellPadding = 4f;
     public float cellSpacing = 8f;
 
@@ -19,56 +16,74 @@ public class GameConfig : MonoBehaviour
     public Transform gridContainer;      // The object with GridLayoutGroup
     public ButtonConfig buttonPrefab;    // Your button prefab
     public TMP_Text selectionCounterText;
+    public GameConfigSO config;
+
+    private int rows;
+    private int cols;
+    private int maxSelectable;
     private int remainingSelectable;
     
-    private List<ButtonConfig> selectedButtons = new List<ButtonConfig>();
+    private readonly List<ButtonConfig> selectedButtons = new List<ButtonConfig>();
 
+    // ----------------------------------------------------------------------------
         void Start()
     {
-        LoadLevelConfigFromJson();
+        LoadConfig();
         ApplyGridStyling();
         BuildGrid();
+
         remainingSelectable = maxSelectable;
         UpdateSelectionUI();
     }
 
     // -------------------------------
-    // JSON support (rows / cols / maxSelectable)
+    // GameConfig ScriptableObject support (rows / cols / maxSelectable)
     // -------------------------------
-    [System.Serializable]
-    private class LevelData
+    private void LoadConfig()
     {
-        public int rows;
-        public int cols;
-        public int maxSelectable;
-    }
-
-    private void LoadLevelConfigFromJson()
-    {
-        string path = Path.Combine(Application.streamingAssetsPath, "level.json");
-
-        if (!File.Exists(path))
+        if (config == null)
         {
-            Debug.LogWarning("JSON config not found: " + path);
+            Debug.LogError("GameConfigSO not assigned in Inspector!");
             return;
         }
 
-        string json = File.ReadAllText(path);
-        LevelData data = JsonUtility.FromJson<LevelData>(json);
+        // STEP 1 — Start with ScriptableObject defaults
+        rows = config.rows;
+        cols = config.cols;
+        maxSelectable = config.maxSelectable;
 
-        rows = data.rows;
-        cols = data.cols;
-        maxSelectable = data.maxSelectable;
+        // STEP 2 — Apply runtime progression JSON (if it exists)
+        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+
+        if (File.Exists(path))
+        {
+            var json = File.ReadAllText(path);
+            var prog = JsonUtility.FromJson<ProgressionData>(json);
+
+            // performs += to rows, cols, maxSelectable inside the SO
+            config.ApplyProgression(prog);
+
+            // Pull updated values from the SO
+            rows = config.rows;
+            cols = config.cols;
+            maxSelectable = config.maxSelectable;
+
+            Debug.Log("Applied progression → rows=" + rows + ", cols=" + cols + ", maxSelectable=" + maxSelectable);
+        }
+        else
+        {
+            Debug.Log("No runtime progression found — using default config.");
+        }
     }
-
     // -------------------------------
-    // Styling
+    // Grid Styling
     // -------------------------------
     private void ApplyGridStyling()
     {
         GridLayoutGroup grid = gridContainer.GetComponent<GridLayoutGroup>();
 
         grid.spacing = new Vector2(cellSpacing, cellSpacing);
+
         grid.padding = new RectOffset(
             (int)cellPadding,
             (int)cellPadding,
@@ -81,7 +96,7 @@ public class GameConfig : MonoBehaviour
     }
 
     // -------------------------------
-    // Grid generation
+    // Grid Generation
     // -------------------------------
     private void BuildGrid()
     {
@@ -101,7 +116,6 @@ public class GameConfig : MonoBehaviour
             for (int c = 0; c < cols; c++)
             {
                 var btn = Instantiate(buttonPrefab, gridContainer);
-
                 // Assign grid coordinates
                 btn.x = c;
                 btn.y = r;
@@ -112,7 +126,7 @@ public class GameConfig : MonoBehaviour
     }
 
     // -------------------------------
-    // Selection logic (unchanged)
+    // Selection Logic
     // -------------------------------
     private void HandleButtonSelection(ButtonConfig btn)
     {
@@ -126,13 +140,11 @@ public class GameConfig : MonoBehaviour
 
             selectedButtons.Add(btn);
             remainingSelectable--;
-            Debug.Log("Remaining Decremented");
         }
         else
         {
             selectedButtons.Remove(btn);
             remainingSelectable++;
-            Debug.Log("Remaining Incremented");
         }
 
         UpdateSelectionUI();
@@ -141,23 +153,19 @@ public class GameConfig : MonoBehaviour
     private void UpdateSelectionUI()
     {
         if (selectionCounterText != null)
-        {
             selectionCounterText.text = remainingSelectable.ToString();
-        }
     }
 
     private PatternData BuildPatternData()
     {
         PatternData data = new PatternData();
-        data.columns = cols;
         data.rows = rows;
-
+        data.columns = cols;
         data.selectedCells = new List<CellPosition>();
 
         foreach (var btn in selectedButtons)
-        {
             data.selectedCells.Add(new CellPosition(btn.x, btn.y));
-        }
+
         return data;
     }
 
@@ -165,24 +173,16 @@ public class GameConfig : MonoBehaviour
     {
         if (selectedButtons.Count != maxSelectable)
         {
-            Debug.LogWarning("You must select exactly " + maxSelectable + " tiles!");
+            Debug.LogWarning($"You must select exactly {maxSelectable} tiles!");
             return;
         }
 
-        Debug.Log("Selection confirmed!");
-        // JSON creation + scene switch goes here later
-        PatternData data = BuildPatternData();
-        string json = OutputPatternToJson(data);
-
-        Debug.Log("Pattern JSON: " + json);
+        var data = BuildPatternData();
+        string json = JsonUtility.ToJson(data);
 
         PlayerPrefs.SetString("runtime_pattern", json);
         PlayerPrefs.Save();
-        SceneManager.LoadScene("Game of Life");
-    }
 
-    private string OutputPatternToJson(PatternData data)
-    {
-        return JsonUtility.ToJson(data);
+        SceneManager.LoadScene("Game of Life");
     }
 }

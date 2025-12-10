@@ -526,7 +526,11 @@ MonoBehaviour:
   nextState: {fileID: 328205448}
   aliveTile: {fileID: 11400000, guid: 3ed5193481d96b004b1b20d2a0949748, type: 2}
   deadTile: {fileID: 11400000, guid: d7861fb010cfc9386a1834965a6b8bc3, type: 2}
-  updateInterval: 0.25
+  updateInterval: 0.05
+  iterationCap: 200
+  startRows: 5
+  startCols: 5
+  startMaxSelectable: 7
 --- !u!1 &1700430198
 GameObject:
   m_ObjectHideFlags: 0

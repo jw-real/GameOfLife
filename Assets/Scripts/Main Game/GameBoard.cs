@@ -1,16 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 [DefaultExecutionOrder(-1)]
 public class GameBoard : MonoBehaviour
 {
+    [Header("Tilemaps")]
     [SerializeField] private Tilemap currentState;
     [SerializeField] private Tilemap nextState;
     [SerializeField] private Tile aliveTile;
     [SerializeField] private Tile deadTile;
+
+    [Header("Simulation")]
     [SerializeField] private float updateInterval = 0.05f;
+    [SerializeField] private int iterationCap = 500;
+
+    [Header("Starting Constraints (set by PatternLoader)")]
+    public int startRows;
+    public int startCols;
+    public int startMaxSelectable;
 
     private readonly HashSet<Vector3Int> aliveCells = new();
     private readonly HashSet<Vector3Int> cellsToCheck = new();
@@ -19,11 +29,11 @@ public class GameBoard : MonoBehaviour
     public int iterations { get; private set; }
     public float time { get; private set; }
 
-    private void Start()
-    {
-        
-    }
+    private List<int> populationHistory = new();
 
+    private void Start() { }
+
+    // Called by PatternLoader
     public void ApplyPattern(PatternData pattern)
     {
         Clear();
@@ -40,6 +50,7 @@ public class GameBoard : MonoBehaviour
         }
 
         population = aliveCells.Count;
+        populationHistory.Add(population);
     }
 
     private Vector2Int ComputeCenter(List<CellPosition> cells)
@@ -54,15 +65,11 @@ public class GameBoard : MonoBehaviour
         {
             if (c.x < minX) minX = c.x;
             if (c.x > maxX) maxX = c.x;
-
             if (c.y < minY) minY = c.y;
             if (c.y > maxY) maxY = c.y;
         }
 
-        return new Vector2Int(
-            (minX + maxX) / 2,
-            (minY + maxY) / 2
-        );
+        return new Vector2Int((minX + maxX) / 2, (minY + maxY) / 2);
     }
 
     private void Clear()
@@ -71,9 +78,11 @@ public class GameBoard : MonoBehaviour
         cellsToCheck.Clear();
         currentState.ClearAllTiles();
         nextState.ClearAllTiles();
+
         population = 0;
         iterations = 0;
         time = 0.0f;
+        populationHistory.Clear();
     }
 
     private void OnEnable()
@@ -92,8 +101,26 @@ public class GameBoard : MonoBehaviour
             UpdateState();
 
             population = aliveCells.Count;
+            populationHistory.Add(population);
+
             iterations++;
             time += updateInterval;
+
+            // 1️⃣ Stop if no live cells remain
+            if (population == 0)
+            {
+                Debug.Log("Simulation ended early — no live cells.");
+                EndSimulation();
+                yield break;
+            }
+
+            // 2️⃣ Stop if iteration cap reached
+            if (iterations >= iterationCap)
+            {
+                Debug.Log("Simulation reached iteration cap.");
+                EndSimulation();
+                yield break;
+            }
 
             yield return interval;
         }
@@ -106,12 +133,8 @@ public class GameBoard : MonoBehaviour
         foreach (Vector3Int cell in aliveCells)
         {
             for (int x = -1; x <= 1; x++)
-            {
-                for (int y = -1; y <= 1; y++)
-                {
-                    cellsToCheck.Add(cell + new Vector3Int(x, y, 0));
-                }
-            }
+            for (int y = -1; y <= 1; y++)
+                cellsToCheck.Add(cell + new Vector3Int(x, y, 0));
         }
 
         // Transition cells to the next state
@@ -148,24 +171,54 @@ public class GameBoard : MonoBehaviour
         int count = 0;
 
         for (int x = -1; x <= 1; x++)
+        for (int y = -1; y <= 1; y++)
         {
-            for (int y = -1; y <= 1; y++)
-            {
-                Vector3Int neighbor = cell + new Vector3Int(x, y);
-
-                if (x == 0 && y == 0) {
-                    continue;
-                } else if (IsAlive(neighbor)) {
-                    count++;
-                }
-            }
+            if (x == 0 && y == 0) continue;
+            if (IsAlive(cell + new Vector3Int(x, y))) count++;
         }
-
         return count;
     }
 
     private bool IsAlive(Vector3Int cell)
     {
         return currentState.GetTile(cell) == aliveTile;
+    }
+
+    private void EndSimulation()
+    {
+        StopAllCoroutines();
+        // Build progression data and save JSON
+        var next = BuildNextProgression();  
+        SaveProgression(next);
+
+        // Return to menu scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CellSelectMenu");
+    }
+
+    private ProgressionData BuildNextProgression()
+    {
+        ProgressionData prog = new ProgressionData(startRows, startCols, startMaxSelectable);
+
+        // Basic scoring — tune this later
+        prog.totalScore = 0;   // Why?
+        prog.totalIterations = iterations;
+        foreach (int p in populationHistory)
+            prog.totalScore += p;
+
+        // Difficulty progression logic
+        if (prog.totalIterations > 250) prog.rows++;
+        if (prog.totalIterations > 250) prog.cols++;
+        if (prog.totalScore > 250) prog.maxSelectable++;
+
+        return prog;
+    }
+
+    private void SaveProgression(ProgressionData prog)
+    {
+        string json = JsonUtility.ToJson(prog, prettyPrint: true);
+        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+
+        File.WriteAllText(path, json);
+        Debug.Log("Saved progression: " + json);
     }
 }

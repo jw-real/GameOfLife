@@ -15,4 +15,4 @@ MonoBehaviour:
   rows: 5
   cols: 5
   maxSelectable: 5
-  iterationCap: 200
+  iterationCap: 300

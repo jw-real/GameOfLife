@@ -47,34 +47,30 @@ public class GameConfig : MonoBehaviour
             return;
         }
 
-        // STEP 1 — Start with ScriptableObject defaults
-        rows = config.rows;
-        cols = config.cols;
-        maxSelectable = config.maxSelectable;
-
-        // STEP 2 — Apply runtime progression JSON (if it exists)
         string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
 
         if (File.Exists(path))
         {
-            var json = File.ReadAllText(path);
-            var prog = JsonUtility.FromJson<ProgressionData>(json);
+            string json = File.ReadAllText(path);
+            ProgressionData prog = JsonUtility.FromJson<ProgressionData>(json);
 
-            // performs += to rows, cols, maxSelectable inside the SO
-            config.ApplyProgression(prog);
+            rows = prog.rows;
+            cols = prog.cols;
+            maxSelectable = prog.maxSelectable;
 
-            // Pull updated values from the SO
+            Debug.Log($"Loaded progression → rows={rows}, cols={cols}, maxSelectable={maxSelectable}");
+        }
+        else
+        {
+            // Only here do we touch the ScriptableObject
             rows = config.rows;
             cols = config.cols;
             maxSelectable = config.maxSelectable;
 
-            Debug.Log("Applied progression → rows=" + rows + ", cols=" + cols + ", maxSelectable=" + maxSelectable);
-        }
-        else
-        {
             Debug.Log("No runtime progression found — using default config.");
         }
     }
+
     // -------------------------------
     // Grid Styling
     // -------------------------------
@@ -185,4 +181,4 @@ public class GameConfig : MonoBehaviour
 
         SceneManager.LoadScene("Game of Life");
     }
-}
+} //189

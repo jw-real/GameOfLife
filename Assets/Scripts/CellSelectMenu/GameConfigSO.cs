@@ -7,15 +7,15 @@ public class GameConfigSO : ScriptableObject
 {
     public int rows = 4;
     public int cols = 4;
-    public int maxSelectable = 4;
+    public int maxSelectable = 5;
 
-    public int iterationCap = 100;
+    public int iterationCap = 300;
 
     // For debugging visibility:
-    public void ApplyProgression(ProgressionData prog)
-    {
-        rows = prog.rows;
-        cols = prog.cols;
-        maxSelectable = prog.maxSelectable;
-    }
+    //public void ApplyProgression(ProgressionData prog)
+    //{
+    //    rows = prog.rows;
+    //    cols = prog.cols;
+    //    maxSelectable = prog.maxSelectable;
+    //}
 }

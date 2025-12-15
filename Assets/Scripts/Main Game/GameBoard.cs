@@ -15,7 +15,7 @@ public class GameBoard : MonoBehaviour
 
     [Header("Simulation")]
     [SerializeField] private float updateInterval = 0.05f;
-    [SerializeField] private int iterationCap = 500;
+    [SerializeField] private int iterationCap = 300;
 
     [Header("Starting Constraints (set by PatternLoader)")]
     public int startRows;
@@ -197,7 +197,7 @@ public class GameBoard : MonoBehaviour
 
     private ProgressionData BuildNextProgression()
     {
-        ProgressionData prog = new ProgressionData(startRows, startCols, startMaxSelectable);
+        ProgressionData prog = LoadProgressionOrDefaults();
 
         // Basic scoring — tune this later
         prog.totalScore = 0;   // Why?
@@ -220,5 +220,26 @@ public class GameBoard : MonoBehaviour
 
         File.WriteAllText(path, json);
         Debug.Log("Saved progression: " + json);
+    }
+
+    private ProgressionData LoadProgressionOrDefaults()
+    {
+        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+
+        if (File.Exists(path))
+        {
+            string json = File.ReadAllText(path);
+            ProgressionData loaded = JsonUtility.FromJson<ProgressionData>(json);
+            Debug.Log("Loaded progression: " + json);
+            return loaded;
+        }
+
+        // No file yet → seed from starting values
+        return new ProgressionData(startRows, startCols, startMaxSelectable);
+    }
+
+    void Awake()
+    {
+        Debug.Log($"[GameBoard Awake] rows={startRows}, cols={startCols}, maxSelectable={startMaxSelectable}");
     }
 }

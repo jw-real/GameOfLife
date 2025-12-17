@@ -5,7 +5,7 @@ public class ProgressionData
     public int cols;
     public int maxSelectable;
 
-    public int totalScore;          // sum of all alive-cell counts over time
+    public int roundScore;          // sum of all alive-cell counts over time
     public int totalIterations;     // how many iterations the run lasted
 
     public ProgressionData(int rows, int cols, int maxSelectable)

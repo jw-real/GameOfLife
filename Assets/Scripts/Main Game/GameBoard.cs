@@ -28,6 +28,7 @@ public class GameBoard : MonoBehaviour
     public int population { get; private set; }
     public int iterations { get; private set; }
     public float time { get; private set; }
+    public CameraController cameraController;
 
     private List<int> populationHistory = new();
 
@@ -38,11 +39,13 @@ public class GameBoard : MonoBehaviour
     {
         Clear();
 
-        // Compute center of the selected cells
+        // 1️⃣ Compute center of the selected cells
         Vector2Int center = ComputeCenter(pattern.selectedCells);
 
+        // 2️⃣ Place tiles and populate aliveCells HashSet
         foreach (var cell in pattern.selectedCells)
         {
+            // Convert from CellPosition to Vector3Int and center
             Vector3Int pos = new Vector3Int(cell.x - center.x, cell.y - center.y, 0);
 
             currentState.SetTile(pos, aliveTile);
@@ -51,12 +54,23 @@ public class GameBoard : MonoBehaviour
 
         population = aliveCells.Count;
         populationHistory.Add(population);
-    }
 
-    private Vector2Int ComputeCenter(List<CellPosition> cells)
+        // 3️⃣ Update camera if we have a CameraController
+        if (aliveCells.Count > 0 && cameraController != null)
+        {
+            // Convert HashSet<Vector3Int> → List<Vector3Int> for TryComputeBounds
+            var aliveList = new List<Vector3Int>(aliveCells);
+
+            if (TryComputeBounds(aliveList, out var bounds))
+            {
+                cameraController.ApplyBounds(bounds);
+            }
+        }
+    }
+    private bool TryComputeBounds(List<Vector3Int> cells, out BoundsInt bounds)
     {
-        if (cells == null || cells.Count == 0)
-            return Vector2Int.zero;
+        bounds = default;
+        if (cells == null || cells.Count == 0) return false;
 
         int minX = int.MaxValue, maxX = int.MinValue;
         int minY = int.MaxValue, maxY = int.MinValue;
@@ -69,8 +83,37 @@ public class GameBoard : MonoBehaviour
             if (c.y > maxY) maxY = c.y;
         }
 
-        return new Vector2Int((minX + maxX) / 2, (minY + maxY) / 2);
+        bounds = new BoundsInt(
+            minX,
+            minY,
+            0,
+            maxX - minX + 1,
+            maxY - minY + 1,
+            1
+        );
+        return true;
     }
+// Compute the center of a pattern given List<CellPosition>
+    private Vector2Int ComputeCenter(List<CellPosition> cells)
+    {
+        if (cells == null || cells.Count == 0)
+            return Vector2Int.zero;
+
+        // Convert List<CellPosition> → List<Vector3Int> for TryComputeBounds
+        var vectorCells = new List<Vector3Int>();
+        foreach (var c in cells)
+            vectorCells.Add(new Vector3Int(c.x, c.y, 0));
+
+        if (!TryComputeBounds(vectorCells, out var bounds))
+            return Vector2Int.zero;
+
+        Vector3 center = bounds.center;
+        return new Vector2Int(
+            Mathf.RoundToInt(center.x),
+            Mathf.RoundToInt(center.y)
+        );
+    }
+
 
     private void Clear()
     {
@@ -200,15 +243,15 @@ public class GameBoard : MonoBehaviour
         ProgressionData prog = LoadProgressionOrDefaults();
 
         // Basic scoring — tune this later
-        prog.totalScore = 0;   // Why?
+        prog.roundScore = 0;   // Why?
         prog.totalIterations = iterations;
         foreach (int p in populationHistory)
-            prog.totalScore += p;
+            prog.roundScore += p;
 
         // Difficulty progression logic
         if (prog.totalIterations > 250) prog.rows++;
         if (prog.totalIterations > 250) prog.cols++;
-        if (prog.totalScore > 250) prog.maxSelectable++;
+        if (prog.roundScore > 250) prog.maxSelectable++;
 
         return prog;
     }
@@ -219,7 +262,7 @@ public class GameBoard : MonoBehaviour
         string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
 
         File.WriteAllText(path, json);
-        Debug.Log("Saved progression: " + json);
+        //Debug.Log("Saved progression: " + json);
     }
 
     private ProgressionData LoadProgressionOrDefaults()
@@ -230,7 +273,7 @@ public class GameBoard : MonoBehaviour
         {
             string json = File.ReadAllText(path);
             ProgressionData loaded = JsonUtility.FromJson<ProgressionData>(json);
-            Debug.Log("Loaded progression: " + json);
+            //Debug.Log("Loaded progression: " + json);
             return loaded;
         }
 
@@ -240,6 +283,19 @@ public class GameBoard : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log($"[GameBoard Awake] rows={startRows}, cols={startCols}, maxSelectable={startMaxSelectable}");
+        //Debug.Log($"[GameBoard Awake] rows={startRows}, cols={startCols}, maxSelectable={startMaxSelectable}");
+    }
+    void LateUpdate()
+    {
+        //Debug.Log("GameBoard LateUpdate running");
+        if (aliveCells.Count > 0 && cameraController != null)
+        {
+            //Debug.Log($"aliveCells={aliveCells.Count}, cameraController={(cameraController == null ? "NULL" : "OK")}");
+            var aliveList = new List<Vector3Int>(aliveCells);
+            if (TryComputeBounds(aliveList, out var bounds))
+            {
+                cameraController.ApplyBounds(bounds);
+            }
+        }
     }
 }

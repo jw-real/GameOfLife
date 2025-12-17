@@ -33,7 +33,7 @@ public class RoundScript : MonoBehaviour
             string json = File.ReadAllText(filePath);
             ProgressionData data = JsonUtility.FromJson<ProgressionData>(json);
 
-            scoreText.text = $"Score: {data.totalScore}";
+            scoreText.text = $"Score: {data.roundScore}";
         }
         catch (System.Exception e)
         {
@@ -45,6 +45,6 @@ public class RoundScript : MonoBehaviour
     [System.Serializable]
     private class ProgressionData
     {
-        public int totalScore;
+        public int roundScore;
     }
 }

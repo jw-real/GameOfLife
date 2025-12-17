@@ -21,7 +21,7 @@ public class GameConfig : MonoBehaviour
     private int rows;
     private int cols;
     private int maxSelectable;
-    private int remainingSelectable;
+    //private int remainingSelectable;
     
     private readonly List<ButtonConfig> selectedButtons = new List<ButtonConfig>();
 
@@ -32,7 +32,7 @@ public class GameConfig : MonoBehaviour
         ApplyGridStyling();
         BuildGrid();
 
-        remainingSelectable = maxSelectable;
+        //remainingSelectable = maxSelectable;
         UpdateSelectionUI();
     }
 
@@ -135,12 +135,12 @@ public class GameConfig : MonoBehaviour
             }
 
             selectedButtons.Add(btn);
-            remainingSelectable--;
+            //remainingSelectable--;
         }
         else
         {
             selectedButtons.Remove(btn);
-            remainingSelectable++;
+            //remainingSelectable++;
         }
 
         UpdateSelectionUI();
@@ -148,6 +148,8 @@ public class GameConfig : MonoBehaviour
  
     private void UpdateSelectionUI()
     {
+        int remainingSelectable = maxSelectable - selectedButtons.Count;
+
         if (selectionCounterText != null)
             selectionCounterText.text = remainingSelectable.ToString();
     }

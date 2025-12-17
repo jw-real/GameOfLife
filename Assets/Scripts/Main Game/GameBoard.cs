@@ -192,7 +192,7 @@ public class GameBoard : MonoBehaviour
         SaveProgression(next);
 
         // Return to menu scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("CellSelectMenu");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
     }
 
     private ProgressionData BuildNextProgression()
@@ -216,7 +216,7 @@ public class GameBoard : MonoBehaviour
     private void SaveProgression(ProgressionData prog)
     {
         string json = JsonUtility.ToJson(prog, prettyPrint: true);
-        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+        string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
 
         File.WriteAllText(path, json);
         Debug.Log("Saved progression: " + json);
@@ -224,7 +224,7 @@ public class GameBoard : MonoBehaviour
 
     private ProgressionData LoadProgressionOrDefaults()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+        string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
 
         if (File.Exists(path))
         {

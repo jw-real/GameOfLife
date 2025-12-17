@@ -47,7 +47,7 @@ public class GameConfig : MonoBehaviour
             return;
         }
 
-        string path = Path.Combine(Application.streamingAssetsPath, "runtime_progression.json");
+        string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
 
         if (File.Exists(path))
         {

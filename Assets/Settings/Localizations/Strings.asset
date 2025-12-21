@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Strings
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: ad14077391353320abc161814a62d89f, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: c90366f42261e4726a0ab0fbb2f4f11e, type: 2}
+  - {fileID: 11400000, guid: a2154440b50c7770e857f7469c7dcea9, type: 2}
+  - {fileID: 11400000, guid: 27ad2fd6c1fdb0298bdf196569bb190d, type: 2}
+  - {fileID: 11400000, guid: 5b4c2c4d3b93623ad9940170f7a89986, type: 2}
+  - {fileID: 11400000, guid: 0a1749a865dd24903b46e9f489e038d9, type: 2}
+  - {fileID: 11400000, guid: aaab9122ced2e9fb9b3f58e36d89d5c2, type: 2}
+  - {fileID: 11400000, guid: cb14e14a1a23d204eba6c2d93cab2720, type: 2}
+  - {fileID: 11400000, guid: e08e27dc9771479e5a7af724ef6ed019, type: 2}
+  - {fileID: 11400000, guid: f9dd6f7616504298586411ede7ffbe3a, type: 2}
+  - {fileID: 11400000, guid: 2d58d738aae172188ba7e6868e1a3203, type: 2}
+  - {fileID: 11400000, guid: 7b04ec8bb6f071ea4bc8ff0078bef0c1, type: 2}
+  - {fileID: 11400000, guid: 356b771362f05e24b8ccf6e4dc4c5147, type: 2}
+  - {fileID: 11400000, guid: 50914e25702429435a6e50ed9a8b9d9b, type: 2}
+  - {fileID: 11400000, guid: d64795dc4ad2ce9eca254a991150ac9b, type: 2}
+  - {fileID: 11400000, guid: 626385a3c1b0a2baf85781928c4e6ad3, type: 2}
+  - {fileID: 11400000, guid: c77f92ecc8bee4569a565912719e0954, type: 2}
+  - {fileID: 11400000, guid: e30c1152974bc37afa5425c60c6d1810, type: 2}
+  - {fileID: 11400000, guid: ff684e29a570bd14a8f6c620ed052fd1, type: 2}
+  - {fileID: 11400000, guid: 3498ae484e2370858b91f23721e4e680, type: 2}
+  - {fileID: 11400000, guid: 7db755da02ce15029b8221c8ab4c6438, type: 2}
+  - {fileID: 11400000, guid: ba715fc78f120ccd5a8f77418cde6e01, type: 2}
+  - {fileID: 11400000, guid: e3aad45fac7ac499db2c989be5f96a26, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

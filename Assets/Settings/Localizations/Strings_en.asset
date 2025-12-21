@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Strings_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: ad14077391353320abc161814a62d89f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 12413926969344
+    m_Localized: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Go Again
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Play
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: Any living cell with fewer than two living neighbors dies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Any living cell with two or three living neighbors survives to the
+      next generation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Any living cell with more than three living neighbors dies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Any dead cell with exactly three living neighbors is born
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13683165302784
+    m_Localized: Touch cells to select or deselect until you have placed all your
+      cells
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13704057131008
+    m_Localized: Earn one point for each living cell in each generation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13734302257152
+    m_Localized: Game will run for 300 generations
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13757115076608
+    m_Localized: Game of Life
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

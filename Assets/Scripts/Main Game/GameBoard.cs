@@ -169,45 +169,50 @@ public class GameBoard : MonoBehaviour
         }
     }
 
-    private void UpdateState()
+private void UpdateState()
+{
+    cellsToCheck.Clear();
+
+    // Collect all cells to check (alive + neighbors)
+    foreach (Vector3Int cell in aliveCells)
     {
-        cellsToCheck.Clear();
-
-        foreach (Vector3Int cell in aliveCells)
-        {
-            for (int x = -1; x <= 1; x++)
-            for (int y = -1; y <= 1; y++)
-                cellsToCheck.Add(cell + new Vector3Int(x, y, 0));
-        }
-
-        // Transition cells to the next state
-        foreach (Vector3Int cell in cellsToCheck)
-        {
-            int neighbors = CountNeighbors(cell);
-            bool alive = IsAlive(cell);
-
-            if (!alive && neighbors == 3)
-            {
-                nextState.SetTile(cell, aliveTile);
-                aliveCells.Add(cell);
-            }
-            else if (alive && (neighbors < 2 || neighbors > 3))
-            {
-                nextState.SetTile(cell, deadTile);
-                aliveCells.Remove(cell);
-            }
-            else // no change
-            {
-                nextState.SetTile(cell, currentState.GetTile(cell));
-            }
-        }
-
-        // Swap current state with next state
-        Tilemap temp = currentState;
-        currentState = nextState;
-        nextState = temp;
-        nextState.ClearAllTiles();
+        for (int x = -1; x <= 1; x++)
+        for (int y = -1; y <= 1; y++)
+            cellsToCheck.Add(cell + new Vector3Int(x, y, 0));
     }
+
+    // Transition cells to the next state
+    foreach (Vector3Int cell in cellsToCheck)
+    {
+        int neighbors = CountNeighbors(cell);
+        bool alive = IsAlive(cell);
+
+        if (!alive && neighbors == 3) // dead → alive
+        {
+            SetCellNextState(cell, true);
+            aliveCells.Add(cell);
+        }
+        else if (alive && (neighbors < 2 || neighbors > 3)) // alive → dead
+        {
+            SetCellNextState(cell, false);
+            aliveCells.Remove(cell);
+        }
+        else // no change
+        {
+            SetCellNextState(cell, alive); // keeps current alive/dead state
+        }
+    }
+
+    // Swap current and next state Tilemaps
+    Tilemap temp = currentState;
+    currentState = nextState;
+    nextState = temp;
+    nextState.ClearAllTiles();
+
+    // Optional: update background color once per iteration
+    if (Camera.main != null)
+        Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
+}
 
     private int CountNeighbors(Vector3Int cell)
     {
@@ -279,6 +284,38 @@ public class GameBoard : MonoBehaviour
 
         // No file yet → seed from starting values
         return new ProgressionData(startRows, startCols, startMaxSelectable);
+    }
+
+    void SetCell(Vector3Int cellPos, bool isAlive)
+    {
+        Tile tileToSet = isAlive ? aliveTile : deadTile;
+        Color colorToSet = isAlive ? ThemeManager.Instance.CurrentTheme.AliveColor 
+                                : ThemeManager.Instance.CurrentTheme.DeadColor;
+
+        // Apply to both Tilemaps
+        currentState.SetTile(cellPos, tileToSet);
+        currentState.SetColor(cellPos, colorToSet);
+
+        nextState.SetTile(cellPos, tileToSet);
+        nextState.SetColor(cellPos, colorToSet);
+
+        // Optional: set background color once per scene
+        if (Camera.main != null)
+            Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
+    }
+
+    /// <summary>
+    /// Writes the alive/dead state and theme colors to nextState only.
+    /// Does NOT touch currentState.
+    /// </summary>
+    private void SetCellNextState(Vector3Int cellPos, bool isAlive)
+    {
+        Tile tileToSet = isAlive ? aliveTile : deadTile;
+        Color colorToSet = isAlive ? ThemeManager.Instance.CurrentTheme.AliveColor 
+                                : ThemeManager.Instance.CurrentTheme.DeadColor;
+
+        nextState.SetTile(cellPos, tileToSet);
+        nextState.SetColor(cellPos, colorToSet);
     }
 
     void Awake()

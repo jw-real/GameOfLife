@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: AlienTheme
   m_EditorClassIdentifier: 
   AliveColor: {r: 0.345, g: 0.753, b: 0.662, a: 1}
-  DeadColor: {r: 0.396, g: 0.196, b: 0.561, a: 1}
-  SimulationBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  DeadColor: {r: 0.9843137, g: 1, b: 0.7372549, a: 1}
+  SimulationBackgroundColor: {r: 0.39607844, g: 0.19607843, b: 0.56078434, a: 0}

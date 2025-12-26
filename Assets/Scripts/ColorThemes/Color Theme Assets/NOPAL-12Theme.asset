@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AliveColor: {r: 0.65882355, g: 0.70980394, b: 0.68235296, a: 1}
   DeadColor: {r: 0.7921569, g: 0.75686276, b: 0.5411765, a: 1}
-  SimulationBackgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  SimulationBackgroundColor: {r: 0.9843137, g: 0.83137256, b: 0.8235294, a: 0}

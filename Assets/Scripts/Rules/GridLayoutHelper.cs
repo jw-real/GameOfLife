@@ -1,23 +1,21 @@
 using UnityEngine;
 
+[ExecuteAlways]
 public class GridLayoutHelper : MonoBehaviour
 {
     [Header("Grid Settings")]
     public int columns = 4;
     public int rows = 4;
-    public float cellSize = 256f;    // Size of each cell in local units
-    public float spacing = 0f;       // Gap between cells
+    public float cellSize = 105f;
+    public float spacing = 0f;
 
     [Header("Cells")]
-    public Transform[] cells;        // Assign all 16 cells here in Inspector
+    public RectTransform[] cells;
 
     public void ArrangeGrid()
     {
         if (cells == null || cells.Length != columns * rows)
-        {
-            Debug.LogError("Please assign all cells in the Inspector.");
             return;
-        }
 
         float gridWidth  = (columns - 1) * (cellSize + spacing);
         float gridHeight = (rows - 1) * (cellSize + spacing);
@@ -29,26 +27,17 @@ public class GridLayoutHelper : MonoBehaviour
         {
             for (int x = 0; x < columns; x++)
             {
-                if (index >= cells.Length) break;
-
-                RectTransform rt = cells[index] as RectTransform;
-                if (rt == null)
-                {
-                    Debug.LogError("Cell is not a RectTransform");
-                }
-
+                RectTransform rt = cells[index];
                 rt.anchoredPosition = new Vector2(
-                x * (cellSize + spacing) - offsetX,
-                -(y * (cellSize + spacing) - offsetY)
+                    x * (cellSize + spacing) - offsetX,
+                    -(y * (cellSize + spacing) - offsetY)
                 );
-
                 index++;
             }
         }
     }
 
-    // Optional: auto-arrange on start
-    private void Start()
+    private void OnValidate()
     {
         ArrangeGrid();
     }

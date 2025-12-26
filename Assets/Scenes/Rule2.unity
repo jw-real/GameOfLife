@@ -1082,7 +1082,7 @@ Animator:
   m_GameObject: {fileID: 1167217030}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7aafd5cf55282c3eeb607b6d07bf360c, type: 2}
+  m_Controller: {fileID: 9100000, guid: ffedbf728f6084e078cd2181fc2af525, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 1523093446}
   - component: {fileID: 1523093445}
   m_Layer: 5
-  m_Name: Rule_1
+  m_Name: Rule_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

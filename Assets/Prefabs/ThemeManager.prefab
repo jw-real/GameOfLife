@@ -50,4 +50,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 035246f57fac4bace9e6481f89c223c3, type: 2}
   - {fileID: 11400000, guid: a6d3d671fa9a9cfa48f501119fdd57b1, type: 2}
   - {fileID: 11400000, guid: b40ce05b4915b7ff6af21c43f6f5c02e, type: 2}
-  DefaultTheme: {fileID: 11400000, guid: f4bbe74ab348e8c0d8c827a844300e9c, type: 2}
+  DefaultTheme: {fileID: 11400000, guid: b40ce05b4915b7ff6af21c43f6f5c02e, type: 2}

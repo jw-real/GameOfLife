@@ -22,6 +22,13 @@ MonoBehaviour:
     m_Localized: Berikutnya
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: 'Sel hidup mana pun yang memiliki kurang dari dua sel tetangga yang
+      masih hidup akan mati.
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

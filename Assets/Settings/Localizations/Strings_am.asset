@@ -22,6 +22,12 @@ MonoBehaviour:
     m_Localized: "\u1240\u1323\u12ED"
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: "\u12A8\u1201\u1208\u1275 \u1260\u1273\u127D \u1215\u12EB\u12CD
+      \u130E\u1228\u1264\u1276\u127D \u12EB\u1209\u1275 \u121B\u1295\u129B\u12CD\u121D
+      \u1215\u12EB\u12CD \u1234\u120D \u12ED\u121E\u1273\u120D"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -22,6 +22,12 @@ MonoBehaviour:
     m_Localized: Suivant
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: 'Toute cellule vivante ayant moins de deux voisins vivants meurt.
+
+'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

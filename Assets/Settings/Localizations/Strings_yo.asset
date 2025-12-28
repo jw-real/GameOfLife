@@ -22,6 +22,12 @@ MonoBehaviour:
     m_Localized: Itele
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: "Gbogbo s\u1EB9\u0301\u1EB9\u0300l\xEC al\xE0\xE0y\xE8 t\xED \xF3
+      n\xED al\xE1d\xF9\xFAgb\xF2 t\xED k\xF2 ju m\xE9j\xEC l\u1ECD l\xF3 m\xE1a
+      k\xFA\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -22,6 +22,11 @@ MonoBehaviour:
     m_Localized: Na gaba
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: "Duk wani \u0199wayar halitta mai ma\u0199wabta masu rai \u0199asa
+      da biyu yana mutuwa\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

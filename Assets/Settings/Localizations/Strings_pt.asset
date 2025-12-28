@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: "Pr\xF3ximo"
     m_Metadata:
       m_Items: []
+  - m_Id: 13573152903168
+    m_Localized: "Qualquer c\xE9lula viva com menos de dois vizinhos vivos morre.\n"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

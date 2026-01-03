@@ -61,11 +61,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13734302257152
-    m_Localized: Game will run for 300 generations
+    m_Localized: Generations
     m_Metadata:
       m_Items: []
   - m_Id: 13757115076608
     m_Localized: Game of Life
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778752205983744
+    m_Localized: View Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Localized: Skip Rules
     m_Metadata:
       m_Items: []
   references:

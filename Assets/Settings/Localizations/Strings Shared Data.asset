@@ -63,6 +63,14 @@ MonoBehaviour:
     m_Key: gol
     m_Metadata:
       m_Items: []
+  - m_Id: 4778752205983744
+    m_Key: view_rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Key: skip_rules
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

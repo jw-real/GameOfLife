@@ -210,8 +210,8 @@ private void UpdateState()
     nextState.ClearAllTiles();
 
     // Optional: update background color once per iteration
-    if (Camera.main != null)
-        Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
+    //if (Camera.main != null)
+        //Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
 }
 
     private int CountNeighbors(Vector3Int cell)
@@ -289,19 +289,19 @@ private void UpdateState()
     void SetCell(Vector3Int cellPos, bool isAlive)
     {
         Tile tileToSet = isAlive ? aliveTile : deadTile;
-        Color colorToSet = isAlive ? ThemeManager.Instance.CurrentTheme.AliveColor 
-                                : ThemeManager.Instance.CurrentTheme.DeadColor;
+        //Color colorToSet = isAlive ? AliveColor 
+        //                        : DeadColor;
 
         // Apply to both Tilemaps
         currentState.SetTile(cellPos, tileToSet);
-        currentState.SetColor(cellPos, colorToSet);
+        //currentState.SetColor(cellPos, colorToSet);
 
         nextState.SetTile(cellPos, tileToSet);
-        nextState.SetColor(cellPos, colorToSet);
+        //nextState.SetColor(cellPos, colorToSet);
 
         // Optional: set background color once per scene
-        if (Camera.main != null)
-            Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
+ //       if (Camera.main != null)
+ //           Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
     }
 
     /// <summary>
@@ -311,11 +311,11 @@ private void UpdateState()
     private void SetCellNextState(Vector3Int cellPos, bool isAlive)
     {
         Tile tileToSet = isAlive ? aliveTile : deadTile;
-        Color colorToSet = isAlive ? ThemeManager.Instance.CurrentTheme.AliveColor 
-                                : ThemeManager.Instance.CurrentTheme.DeadColor;
+        //Color colorToSet = isAlive ? AliveColor 
+        //                       : DeadColor;
 
         nextState.SetTile(cellPos, tileToSet);
-        nextState.SetColor(cellPos, colorToSet);
+        //nextState.SetColor(cellPos, colorToSet);
     }
 
     void Awake()

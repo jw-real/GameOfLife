@@ -28,6 +28,18 @@ MonoBehaviour:
       \uC8FD\uC2B5\uB2C8\uB2E4.\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 13757115076608
+    m_Localized: "\uC0DD\uBA85\uC758 \uAC8C\uC784"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778752205983744
+    m_Localized: "\uADDC\uCE59 \uBCF4\uAE30"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Localized: "\uADDC\uCE59 \uAC74\uB108\uB6F0\uAE30"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

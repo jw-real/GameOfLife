@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dead
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 98943f19614c857ffbc71ca30f04409b, type: 3}
-  m_Color: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
+  m_Color: {r: 0.2, g: 0.54509807, b: 0.79607844, a: 1}
   m_Transform:
     e00: 1
     e01: 0

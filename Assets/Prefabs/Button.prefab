@@ -93,4 +93,4 @@ MonoBehaviour:
   y: 0
   isSelected: 0
   aliveColor: {r: 0.75686276, g: 0.14509805, b: 0.14509805, a: 1}
-  deadColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
+  deadColor: {r: 0.2, g: 0.54509807, b: 0.79607844, a: 1}

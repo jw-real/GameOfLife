@@ -28,6 +28,18 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 13757115076608
+    m_Localized: Jeu de la vie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778752205983744
+    m_Localized: "Voir les r\xE8gles"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Localized: "Ignorer les r\xE8gles"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

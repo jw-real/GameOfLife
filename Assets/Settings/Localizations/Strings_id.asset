@@ -29,6 +29,18 @@ MonoBehaviour:
 '
     m_Metadata:
       m_Items: []
+  - m_Id: 13757115076608
+    m_Localized: Permainan Kehidupan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778752205983744
+    m_Localized: Lihat Aturan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Localized: Lewati Aturan
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

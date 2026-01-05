@@ -26,6 +26,18 @@ MonoBehaviour:
     m_Localized: "Qualquer c\xE9lula viva com menos de dois vizinhos vivos morre.\n"
     m_Metadata:
       m_Items: []
+  - m_Id: 13757115076608
+    m_Localized: Jogo da Vida
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778752205983744
+    m_Localized: Ver regras
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4778801132539904
+    m_Localized: Ignorar regras
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -47,18 +47,6 @@ MonoBehaviour:
     m_Key: rule_4
     m_Metadata:
       m_Items: []
-  - m_Id: 13683165302784
-    m_Key: instructions
-    m_Metadata:
-      m_Items: []
-  - m_Id: 13704057131008
-    m_Key: score
-    m_Metadata:
-      m_Items: []
-  - m_Id: 13734302257152
-    m_Key: generations
-    m_Metadata:
-      m_Items: []
   - m_Id: 13757115076608
     m_Key: gol
     m_Metadata:
@@ -69,6 +57,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4778801132539904
     m_Key: skip_rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Key: score
     m_Metadata:
       m_Items: []
   m_Metadata:

@@ -41,6 +41,37 @@ MonoBehaviour:
     m_Localized: Lewati Aturan
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Sel hidup mana pun yang memiliki dua atau tiga sel tetangga yang
+      masih hidup akan bertahan hingga generasi berikutnya.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Sel hidup mana pun yang memiliki lebih dari tiga sel tetangga yang
+      masih hidup akan mati.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Sel mana pun yang mati dan memiliki tepat tiga sel tetangga yang
+      hidup akan menjadi hidup.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Bermain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Berhenti
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Main lagi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Skor
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

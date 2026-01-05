@@ -41,6 +41,36 @@ MonoBehaviour:
     m_Localized: Dzoka Mitemo
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Chero sero ripi zvaro rine vavakidzani vapenyu vaviri kana vatatu
+      rinorarama kusvika kuchizvarwa chinotevera.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Chero sero ripi zvaro rine vavakidzani vapenyu vanopfuura vatatu
+      rinofa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Chero sero rakafa rine vavakidzani vatatu vapenyu rinozvarwa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Tamba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Rega
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Tambazve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Chibodzwa
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

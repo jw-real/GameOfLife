@@ -40,6 +40,41 @@ MonoBehaviour:
     m_Localized: "Fo Aw\u1ECDn Ofin"
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: "S\u1EB9\u0301\u1EB9\u0300l\xEC al\xE0\xE0y\xE8 \xE8y\xEDk\xE9y\xEC\xED
+      t\xED \xF3 n\xED al\xE1d\xF9\xFAgb\xF2 m\xE9j\xEC t\xE0b\xED m\u1EB9\u0301ta
+      t\xED \xF3 w\xE0 l\xE1\xE0y\xE8 y\xF3\xF2 w\xE0 l\xE1\xE0y\xE8 t\xEDt\xED di
+      \xECran t\xED \u0144 b\u1ECD\u0300"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: "Gbogbo s\u1EB9\u0301\u1EB9\u0300l\xEC al\xE0\xE0y\xE8 t\xED \xF3
+      n\xED al\xE1d\xF9\xFAgb\xF2 t\xED \xF3 ju m\u1EB9\u0301ta l\u1ECD y\xF3\xF2
+      k\xFA"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: "A b\xED s\u1EB9\u0301\u1EB9\u0300l\xEC \xF2k\xFA \xE8y\xEDk\xE9y\xEC\xED
+      t\xED \xF3 b\xE1 n\xED al\xE1d\xF9\xFAgb\xF2 m\u1EB9\u0301ta t\xED \xF3 w\xE0
+      l\xE1\xE0y\xE8"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: "\u1E62er\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: "Fi i\u1E63\u1EB9\u0301 s\xEDl\u1EB9\u0300"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: "Mu \u1E63i\u1E63\u1EB9 l\u1EB9\u1EB9kansii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: O wole
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

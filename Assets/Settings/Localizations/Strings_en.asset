@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 13411777056768
-    m_Localized: Go Again
+    m_Localized: Play Again
     m_Metadata:
       m_Items: []
   - m_Id: 13475631140864
@@ -51,19 +51,6 @@ MonoBehaviour:
     m_Localized: Any dead cell with exactly three living neighbors is born
     m_Metadata:
       m_Items: []
-  - m_Id: 13683165302784
-    m_Localized: Touch cells to select or deselect until you have placed all your
-      cells
-    m_Metadata:
-      m_Items: []
-  - m_Id: 13704057131008
-    m_Localized: Earn one point for each living cell in each generation
-    m_Metadata:
-      m_Items: []
-  - m_Id: 13734302257152
-    m_Localized: Generations
-    m_Metadata:
-      m_Items: []
   - m_Id: 13757115076608
     m_Localized: Game of Life
     m_Metadata:
@@ -74,6 +61,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 4778801132539904
     m_Localized: Skip Rules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Score
     m_Metadata:
       m_Items: []
   references:

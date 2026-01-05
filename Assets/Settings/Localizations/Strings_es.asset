@@ -39,6 +39,37 @@ MonoBehaviour:
     m_Localized: Omitir reglas
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: "Cualquier c\xE9lula viva que tenga dos o tres c\xE9lulas vecinas
+      vivas sobrevive a la siguiente generaci\xF3n."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: "Cualquier c\xE9lula viva con m\xE1s de tres c\xE9lulas vecinas
+      vivas muere."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: "Cualquier c\xE9lula muerta que tenga exactamente tres c\xE9lulas
+      vecinas vivas nace."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Abandonar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Jugar de nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Puntaje
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

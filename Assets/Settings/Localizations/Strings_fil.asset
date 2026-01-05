@@ -41,6 +41,37 @@ MonoBehaviour:
     m_Localized: Mga Panuntunan sa Paglaktaw
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Anumang buhay na selula na may dalawa o tatlong buhay na kapitbahay
+      ay nabubuhay hanggang sa susunod na henerasyon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Ang anumang buhay na selula na may higit sa tatlong buhay na kapitbahay
+      ay namamatay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Ang anumang patay na selula na may eksaktong tatlong buhay na kapitbahay
+      ay ipinapanganak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Maglaro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Huminto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Maglaro Muli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Iskor
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

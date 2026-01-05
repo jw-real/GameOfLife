@@ -40,6 +40,35 @@ MonoBehaviour:
     m_Localized: Ruka Sheria
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Seli yoyote hai yenye majirani wawili au watatu hai huishi hadi
+      kizazi kijacho
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Seli yoyote hai yenye majirani zaidi ya watatu hai hufa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Seli yoyote iliyokufa yenye majirani watatu walio hai huzaliwa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Cheza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Acha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Cheza Tena
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Alama
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

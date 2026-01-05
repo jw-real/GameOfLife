@@ -39,6 +39,39 @@ MonoBehaviour:
     m_Localized: "W\u1EE5fuo Iwu"
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: "Mkp\u1EE5r\u1EE5 nd\u1EE5 \u1ECD b\u1EE5la d\u1ECB nd\u1EE5 nwere
+      agbata obi ab\u1EE5\u1ECD ma \u1ECD b\u1EE5 at\u1ECD d\u1ECB nd\u1EE5 na-ad\u1ECB
+      nd\u1EE5 ruo \u1ECDgb\u1ECD \u1ECDz\u1ECD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: "Mkp\u1EE5r\u1EE5 nd\u1EE5 \u1ECD b\u1EE5la nwere ihe kar\u1ECBr\u1ECB
+      nd\u1ECB agbata obi at\u1ECD d\u1ECB nd\u1EE5 na-anw\u1EE5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: "A na-am\u1EE5p\u1EE5ta mkp\u1EE5r\u1EE5 nd\u1EE5 nw\u1EE5r\u1EE5
+      anw\u1EE5 \u1ECD b\u1EE5la nwere kp\u1ECDmkwem nd\u1ECB agbata obi at\u1ECD
+      d\u1ECB nd\u1EE5"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Gwuo egwu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: "Kw\u1EE5s\u1ECB"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: "Kp\u1ECD\u1ECD \u1ECCz\u1ECD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Akara
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

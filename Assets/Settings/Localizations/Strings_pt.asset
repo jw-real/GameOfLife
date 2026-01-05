@@ -38,6 +38,36 @@ MonoBehaviour:
     m_Localized: Ignorar regras
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: "Qualquer c\xE9lula viva com dois ou tr\xEAs vizinhos vivos sobrevive
+      para a pr\xF3xima gera\xE7\xE3o."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: "Qualquer c\xE9lula viva com mais de tr\xEAs vizinhos vivos morre."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: "Qualquer c\xE9lula morta com exatamente tr\xEAs vizinhos vivos
+      nasce."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Jogar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Desistir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Jogar novamente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: "Pontua\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

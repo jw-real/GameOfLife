@@ -41,6 +41,37 @@ MonoBehaviour:
     m_Localized: Yeqa Imithetho
     m_Metadata:
       m_Items: []
+  - m_Id: 13595433046016
+    m_Localized: Noma yiliphi iseli eliphilayo elinomakhelwane ababili noma abathathu
+      abaphilayo liyasinda esizukulwaneni esilandelayo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13618023567360
+    m_Localized: Noma yiliphi iseli eliphilayo elinomakhelwane abaphilayo abangaphezu
+      kwabathathu liyafa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13642543468544
+    m_Localized: Noma yiliphi iseli elifile elinomakhelwane abathathu abaphilayo
+      liyazalwa
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13506174062592
+    m_Localized: Dlala
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13475631140864
+    m_Localized: Yeka
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13411777056768
+    m_Localized: Dlala Futhi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5526437909303296
+    m_Localized: Umphumela
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

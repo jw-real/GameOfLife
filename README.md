@@ -1,6 +1,6 @@
 Privacy Policy
 
-Effective Date: [Insert date]
+Effective Date: January 7th, 2026
 
 This application (“the App”) is provided by the developer as a free application and is intended for use as is.
 

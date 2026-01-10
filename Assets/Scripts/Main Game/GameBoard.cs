@@ -236,17 +236,21 @@ private void UpdateState()
     {
         StopAllCoroutines();
         // Build progression data and save JSON
-        var next = BuildNextProgression();  
-        SaveProgression(next);
+        //var next = BuildNextProgression();  
+        //SaveProgression(next);
 
         // Return to menu scene
         UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
     }
 
-    private ProgressionData BuildNextProgression()
+ /*   private ProgressionData BuildNextProgression()
     {
         ProgressionData prog = LoadProgressionOrDefaults();
 
+        // Update all this logic. Player should start with 0 coins, 5 rows, 5 columns, 5 selectable cells. Rather than incrementing automatically
+        // based on iterations and round score, players should earn 1 coin per point and be prompted to purchase additional rows, columns, selectable cells
+        // at the beginning of each iteration. Cost per each should increase as more are purchased. Also start with 300 iterations and allow additional iterations
+        //  to be purchased. The time per round should decrease as iterations increase to ensure each round ends in a timely manner. 
         // Basic scoring — tune this later
         prog.roundScore = 0;   // Why?
         prog.totalIterations = iterations;
@@ -260,7 +264,8 @@ private void UpdateState()
 
         return prog;
     }
-
+*/
+/*
     private void SaveProgression(ProgressionData prog)
     {
         string json = JsonUtility.ToJson(prog, prettyPrint: true);
@@ -269,8 +274,8 @@ private void UpdateState()
         File.WriteAllText(path, json);
         //Debug.Log("Saved progression: " + json);
     }
-
-    private ProgressionData LoadProgressionOrDefaults()
+*/
+ /*   private ProgressionData LoadProgressionOrDefaults()
     {
         string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
 
@@ -285,7 +290,7 @@ private void UpdateState()
         // No file yet → seed from starting values
         return new ProgressionData(startRows, startCols, startMaxSelectable);
     }
-
+*/
     void SetCell(Vector3Int cellPos, bool isAlive)
     {
         Tile tileToSet = isAlive ? aliveTile : deadTile;

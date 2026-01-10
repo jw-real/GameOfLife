@@ -47,7 +47,7 @@ public class GameConfig : MonoBehaviour
             return;
         }
 
-        string path = Path.Combine(Application.persistentDataPath, "runtime_progression.json");
+        string path = Path.Combine(Application.persistentDataPath, "player_profile.json");
 
         if (File.Exists(path))
         {
@@ -183,4 +183,4 @@ public class GameConfig : MonoBehaviour
 
         SceneManager.LoadScene("Game of Life");
     }
-} //189
+} //89 + 80 = 169

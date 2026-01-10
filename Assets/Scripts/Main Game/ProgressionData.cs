@@ -8,7 +8,7 @@ public class ProgressionData
     public int roundScore;          // sum of all alive-cell counts over time
     public int totalIterations;     // how many iterations the run lasted
 
-    public ProgressionData(int rows, int cols, int maxSelectable)
+    public ProgressionData(int rows, int cols, int maxSelectable, int coins)
     {
         this.rows = rows;
         this.cols = cols;

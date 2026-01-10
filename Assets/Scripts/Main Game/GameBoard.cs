@@ -243,6 +243,17 @@ private void UpdateState()
         UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
     }
 
+    /*private RunResultData BuildResultData()
+    // Instead, create RunResultData inside the CellSelectMenu scene, perhaps in GameConfig.
+    // Call the PatternNormalizer script to generate the hash value and save it while initializing totalIterations and roundScore to 0
+    // Then use this function to mutate these two values with the outcome of the simulation run
+    {
+        totalIterations = iterations;
+        foreach (int p in populationHistory)
+            roundScore += p;
+    }
+    */
+
  /*   private ProgressionData BuildNextProgression()
     {
         ProgressionData prog = LoadProgressionOrDefaults();

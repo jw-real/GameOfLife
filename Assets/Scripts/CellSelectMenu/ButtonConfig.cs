@@ -16,6 +16,8 @@ public class ButtonConfig : MonoBehaviour, IPointerClickHandler
     [SerializeField] private Color aliveColor;
     [SerializeField] private Color deadColor;
 
+    public Vector2Int GridPosition => new Vector2Int(x, y);
+
     void Awake()
     {
         if (img == null)

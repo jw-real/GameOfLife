@@ -167,6 +167,37 @@ public class GameConfig : MonoBehaviour
         return data;
     }
 
+    private RunResultData InitializeRunResult(HashSet<Vector2Int> selectedCells)
+    {
+        RunResultData runResult = new RunResultData();
+
+        // Identity (set once)
+        runResult.patternHash = PatternNormalizer.ComputeCanonicalHash(selectedCells);
+
+        // Metrics (initialized, not yet accumulated)
+        runResult.roundScore = 0;
+        runResult.totalIterations = 0;
+
+        // Persist for the duration of the run
+        string json = JsonUtility.ToJson(runResult);
+        PlayerPrefs.SetString("run_result", json);
+        PlayerPrefs.Save();
+
+        return runResult;
+    }
+
+    private HashSet<Vector2Int> ToCellSet(List<ButtonConfig> buttons)
+    {
+        HashSet<Vector2Int> set = new HashSet<Vector2Int>();
+
+        foreach (var btn in buttons)
+        {
+            set.Add(btn.GridPosition);
+        }
+
+        return set;
+    }
+
     public void ConfirmSelection()
     {
         if (selectedButtons.Count != maxSelectable)
@@ -175,12 +206,16 @@ public class GameConfig : MonoBehaviour
             return;
         }
 
-        var data = BuildPatternData();
-        string json = JsonUtility.ToJson(data);
+        // 1. Persist the pattern for the simulation
+        var patternData = BuildPatternData();
+        PlayerPrefs.SetString("runtime_pattern", JsonUtility.ToJson(patternData));
 
-        PlayerPrefs.SetString("runtime_pattern", json);
+        // 2. Initialize run result (identity + zeroed metrics)
+        HashSet<Vector2Int> cellSet = ToCellSet(selectedButtons);
+        InitializeRunResult(cellSet);
+
+        // 3. Commit and transition
         PlayerPrefs.Save();
-
         SceneManager.LoadScene("Game of Life");
     }
-} //89 + 80 = 169
+}

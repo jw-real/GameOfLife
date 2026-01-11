@@ -3,8 +3,8 @@ using System.IO;
 
 public class Quit : MonoBehaviour
 {
-    // OnClick Quit Game and destroy runtime_progession.json
-    private const string ProgressionFileName = "runtime_progression.json";
+    // OnClick Quit Game and destroy run_result.json
+    private const string ProgressionFileName = "run_result.json";
 
     public void OnQuitButtonPressed()
     {

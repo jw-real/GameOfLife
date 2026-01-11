@@ -2,7 +2,7 @@ using System.IO;
 using UnityEngine;
 using TMPro;
 
-public class RoundScript : MonoBehaviour
+public class RoundScore : MonoBehaviour
 {
     [Header("UI References")]
     [SerializeField]
@@ -10,7 +10,7 @@ public class RoundScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI scoreNumber;   // Numeric value
 
-    private const string ProgressionFileName = "runtime_progression.json";
+    private const string ProgressionFileName = "run_result.json";
 
     private void OnEnable()
     {
@@ -35,7 +35,7 @@ public class RoundScript : MonoBehaviour
             try
             {
                 string json = File.ReadAllText(filePath);
-                ProgressionData data = JsonUtility.FromJson<ProgressionData>(json);
+                RunResultData data = JsonUtility.FromJson<RunResultData>(json);
                 roundScore = data.roundScore;
             }
             catch (System.Exception e)
@@ -59,7 +59,7 @@ public class RoundScript : MonoBehaviour
     }
 
     [System.Serializable]
-    private class ProgressionData
+    private class RunResultData
     {
         public int roundScore;
     }

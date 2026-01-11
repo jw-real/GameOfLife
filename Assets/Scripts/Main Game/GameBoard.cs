@@ -238,6 +238,8 @@ private void UpdateState()
         // Build progression data and save JSON
         //var next = BuildNextProgression();  
         //SaveProgression(next);
+        RunResultData runResult = FinalizeRunResult();
+        SaveRunResult(runResult);
 
         // Return to menu scene
         UnityEngine.SceneManagement.SceneManager.LoadScene("ScoreScene");
@@ -253,6 +255,49 @@ private void UpdateState()
             roundScore += p;
     }
     */
+    private RunResultData FinalizeRunResult()
+    {
+        if (!PlayerPrefs.HasKey("run_result"))
+        {
+            Debug.LogError("run_result not found. Was InitializeRunResult called?");
+            return null;
+        }
+
+        string json = PlayerPrefs.GetString("run_result");
+        RunResultData runResult = JsonUtility.FromJson<RunResultData>(json);
+
+        // Mutate with results from this run
+        runResult.totalIterations = iterations;
+
+        int score = 0;
+        foreach (int p in populationHistory)
+            score += p;
+
+        runResult.roundScore = score;
+
+        return runResult;
+    }
+
+
+    private void SaveRunResult(RunResultData runResult)
+    {
+        if (runResult == null)
+        {
+            Debug.LogError("SaveRunResult called with null RunResultData.");
+            return;
+        }
+
+        string json = JsonUtility.ToJson(runResult, true);
+        string path = Path.Combine(
+            Application.persistentDataPath,
+            "run_result.json"
+        );
+
+        File.WriteAllText(path, json);
+
+        Debug.Log($"Run result saved to: {path}");
+    }
+
 
  /*   private ProgressionData BuildNextProgression()
     {
@@ -305,19 +350,10 @@ private void UpdateState()
     void SetCell(Vector3Int cellPos, bool isAlive)
     {
         Tile tileToSet = isAlive ? aliveTile : deadTile;
-        //Color colorToSet = isAlive ? AliveColor 
-        //                        : DeadColor;
 
         // Apply to both Tilemaps
         currentState.SetTile(cellPos, tileToSet);
-        //currentState.SetColor(cellPos, colorToSet);
-
         nextState.SetTile(cellPos, tileToSet);
-        //nextState.SetColor(cellPos, colorToSet);
-
-        // Optional: set background color once per scene
- //       if (Camera.main != null)
- //           Camera.main.backgroundColor = ThemeManager.Instance.CurrentTheme.DeadColor;
     }
 
     /// <summary>

@@ -119,6 +119,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &6536005
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6536007}
+  - component: {fileID: 6536006}
+  m_Layer: 0
+  m_Name: ScriptObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &6536006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c896f5faf22d2250829ba9b15e014e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseRowCost: 1000
+  baseColCost: 1000
+  baseCellCost: 750
+  coinsText: {fileID: 642013104}
+--- !u!4 &6536007
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536005}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -305.11523, y: 1251.743, z: -5.1915092}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &277568674
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +249,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 277568677}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6536006}
+        m_TargetAssemblyTypeName: MakePurchase, Assembly-CSharp
+        m_MethodName: PurchaseColumn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &277568677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +382,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 291168546}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6536006}
+        m_TargetAssemblyTypeName: MakePurchase, Assembly-CSharp
+        m_MethodName: PurchaseRow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &291168546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -852,7 +924,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1441881845}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6536006}
+        m_TargetAssemblyTypeName: MakePurchase, Assembly-CSharp
+        m_MethodName: PurchaseCell
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
 --- !u!114 &1441881845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,3 +1514,4 @@ SceneRoots:
   - {fileID: 1025198074}
   - {fileID: 1847762496}
   - {fileID: 1984509103}
+  - {fileID: 6536007}

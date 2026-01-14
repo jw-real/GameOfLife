@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScoreScene.unity
     guid: b764b13333824b1bb9b17d26e8190ead
+  - enabled: 1
+    path: Assets/Scenes/Store.unity
+    guid: fa173ce8de23b94eda8ee0e105d0dfe8
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 29e700797f15147ad93c8b41e8692412, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

@@ -63,6 +63,18 @@ MonoBehaviour:
     m_Key: score
     m_Metadata:
       m_Items: []
+  - m_Id: 8795647036952576
+    m_Key: purchase_row_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795654116937728
+    m_Key: purchase_column_button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Key: purchase_cell_button
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

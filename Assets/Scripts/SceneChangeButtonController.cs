@@ -27,4 +27,9 @@ public class SceneChangeButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Rule4");
     }
+
+    public void GoToStore()
+    {
+        SceneManager.LoadScene("Store");
+    }
 }

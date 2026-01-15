@@ -172,7 +172,8 @@ public class GameConfig : MonoBehaviour
         RunResultData runResult = new RunResultData();
 
         // Identity (set once)
-        runResult.patternHash = PatternNormalizer.ComputeCanonicalHash(selectedCells);
+        runResult.patternCanonical =
+            PatternNormalizer.ComputeCanonicalPattern(selectedCells);
 
         // Metrics (initialized, not yet accumulated)
         runResult.roundScore = 0;

@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HighScores.unity
     guid: 9b96a91eccc44ace182c641d2692d972
+  - enabled: 1
+    path: Assets/Scenes/PatternViewer.unity
+    guid: 799445c33c9d40fe1b36e6d8ed481adc
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 29e700797f15147ad93c8b41e8692412, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

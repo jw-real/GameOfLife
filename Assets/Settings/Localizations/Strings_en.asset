@@ -87,6 +87,10 @@ MonoBehaviour:
     m_Localized: High Scores
     m_Metadata:
       m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Store
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

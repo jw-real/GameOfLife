@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
 
 public static class PatternNormalizer
 {
-    public static string ComputeCanonicalHash(HashSet<Vector2Int> liveCells)
+    /// <summary>
+    /// Computes a canonical, reversible string representation of a pattern.
+    /// Identical patterns under rotation/reflection yield identical strings.
+    /// </summary>
+    public static string ComputeCanonicalPattern(HashSet<Vector2Int> liveCells)
     {
         if (liveCells == null || liveCells.Count == 0)
             return string.Empty;
@@ -15,13 +18,13 @@ public static class PatternNormalizer
         // Step 1: normalize translation
         bool[,] baseGrid = BuildCroppedGrid(liveCells);
 
-        // Step 2: store rotations as variables
+        // Step 2: rotations
         var r0 = baseGrid;
         var r90 = Rotate90(r0);
         var r180 = Rotate180(r0);
         var r270 = Rotate270(r0);
 
-        // Step 3: generate rotations & reflections
+        // Step 3: rotations + reflections
         List<bool[,]> variants = new List<bool[,]>
         {
             r0,
@@ -34,14 +37,11 @@ public static class PatternNormalizer
             ReflectHorizontal(r270)
         };
 
-        // Step 4: canonical string
-        string canonical = variants
+        // Step 4: canonical serialized form
+        return variants
             .Select(v => SerializeGrid(CropGrid(v)))
             .OrderBy(s => s, StringComparer.Ordinal)
             .First();
-
-        // Step 4: hash
-        return HashString(canonical);
     }
 
     // -------------------------
@@ -61,9 +61,7 @@ public static class PatternNormalizer
         bool[,] grid = new bool[width, height];
 
         foreach (var c in cells)
-        {
             grid[c.x - minX, c.y - minY] = true;
-        }
 
         return grid;
     }
@@ -131,15 +129,19 @@ public static class PatternNormalizer
     }
 
     // -------------------------
-    // Serialization & hashing
+    // Serialization
     // -------------------------
 
+    /// <summary>
+    /// Row-major serialization using '1' and '0', rows delimited by '|'.
+    /// Fully reversible.
+    /// </summary>
     private static string SerializeGrid(bool[,] grid)
     {
         int w = grid.GetLength(0);
         int h = grid.GetLength(1);
 
-        StringBuilder sb = new StringBuilder();
+        StringBuilder sb = new StringBuilder(w * h + h);
 
         for (int y = 0; y < h; y++)
         {
@@ -152,13 +154,27 @@ public static class PatternNormalizer
         return sb.ToString();
     }
 
-    private static string HashString(string input)
+    public static HashSet<Vector2Int> DecodeCanonical(string canonical)
     {
-        using (SHA256 sha = SHA256.Create())
+        HashSet<Vector2Int> cells = new HashSet<Vector2Int>();
+
+        if (string.IsNullOrEmpty(canonical))
+            return cells;
+
+        string[] rows = canonical.Split('|', StringSplitOptions.RemoveEmptyEntries);
+
+        for (int y = 0; y < rows.Length; y++)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(input);
-            byte[] hash = sha.ComputeHash(bytes);
-            return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+            string row = rows[y];
+
+            for (int x = 0; x < row.Length; x++)
+            {
+                if (row[x] == '1')
+                    cells.Add(new Vector2Int(x, y));
+            }
         }
+
+        return cells;
     }
+
 }

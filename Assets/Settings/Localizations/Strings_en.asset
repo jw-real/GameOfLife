@@ -79,6 +79,14 @@ MonoBehaviour:
     m_Localized: Purchase Cell
     m_Metadata:
       m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: View Pattern
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: High Scores
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

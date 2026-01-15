@@ -32,4 +32,9 @@ public class SceneChangeButtonController : MonoBehaviour
     {
         SceneManager.LoadScene("Store");
     }
+
+    public void GoToHighScore()
+    {
+        SceneManager.LoadScene("HighScore");
+    }
 }

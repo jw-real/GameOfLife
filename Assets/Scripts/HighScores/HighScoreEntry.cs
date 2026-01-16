@@ -2,5 +2,5 @@
 public class HighScoreEntry
 {   
     public int score;
-    public string patternHash;
+    public string patternCanonical;
 }

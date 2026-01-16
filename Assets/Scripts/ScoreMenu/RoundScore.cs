@@ -15,6 +15,7 @@ public class RoundScore : MonoBehaviour
     private void OnEnable()
     {
         LoadAndDisplayScore();
+        HighScorePersistence.TryAddRun();
     }
 
     private void LoadAndDisplayScore()
@@ -56,11 +57,5 @@ public class RoundScore : MonoBehaviour
             // The numeric value — updated separately
             scoreNumber.text = roundScore.ToString();
         }
-    }
-
-    [System.Serializable]
-    private class RunResultData
-    {
-        public int roundScore;
     }
 }

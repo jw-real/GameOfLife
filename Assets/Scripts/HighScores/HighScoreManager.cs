@@ -55,7 +55,7 @@ public class HighScoreManager : MonoBehaviour
         row.viewPatternButton.onClick.RemoveAllListeners();
         row.viewPatternButton.onClick.AddListener(() =>
         {
-            PlayerPrefs.SetString("view_pattern_hash", entry.patternHash);
+            PlayerPrefs.SetString("view_pattern_hash", entry.patternCanonical);
             SceneManager.LoadScene("PatternViewer");
         });
     }
@@ -79,5 +79,51 @@ public class HighScoreManager : MonoBehaviour
 
         string json = File.ReadAllText(path);
         return JsonUtility.FromJson<HighScoreTable>(json);
+    }
+
+    public void TryAddRun()
+    {
+        string runPath = Path.Combine(Application.persistentDataPath, "run_result.json");
+        if (!File.Exists(runPath))
+        {
+            Debug.LogWarning("TryAddRun called, but run_result.json does not exist.");
+            return;
+        }
+
+        // Load run result
+        RunResultData run;
+        try
+        {
+            string runJson = File.ReadAllText(runPath);
+            run = JsonUtility.FromJson<RunResultData>(runJson);
+        }
+        catch
+        {
+            Debug.LogWarning("Failed to parse run_result.json");
+            return;
+        }
+
+        if (run == null || string.IsNullOrEmpty(run.patternCanonical))
+        {
+            Debug.LogWarning("Invalid run result data.");
+            return;
+        }
+
+        // Load existing high scores
+        HighScoreTable table = LoadHighScores();
+
+        // Append new entry
+        table.entries.Add(new HighScoreEntry
+        {
+            score = run.roundScore,
+            patternCanonical = run.patternCanonical
+        });
+
+        // Persist
+        string highScorePath = Path.Combine(Application.persistentDataPath, HighScoreFileName);
+        string json = JsonUtility.ToJson(table, true);
+        File.WriteAllText(highScorePath, json);
+
+        Debug.Log($"Added high score: {run.roundScore} ({run.patternCanonical})");
     }
 }

@@ -35,6 +35,19 @@ public class SceneChangeButtonController : MonoBehaviour
 
     public void GoToHighScore()
     {
-        SceneManager.LoadScene("HighScore");
+        SceneManager.LoadScene("HighScores");
+    }
+    public void OnViewPatternHighScore(string patternCanonical)
+    {
+        PatternSelectionContext.Set(patternCanonical);
+        NavigationContext.SetPreviousScene("HighScores");
+        SceneManager.LoadScene("PatternViewer");
+    }
+
+    public void OnViewPatternLibrary(string patternCanonical)
+    {
+        PatternSelectionContext.Set(patternCanonical);
+        NavigationContext.SetPreviousScene("Library");
+        SceneManager.LoadScene("PatternViewer");
     }
 }

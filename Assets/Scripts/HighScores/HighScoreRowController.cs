@@ -12,7 +12,7 @@ public class HighScoreRowController : MonoBehaviour
 
     public void OnViewPatternClicked()
     {
-        PatternSelectionContext.SelectedPatternCanonical = patternCanonical;
+        PatternSelectionContext.Set(patternCanonical);
         SceneManager.LoadScene("PatternViewer");
     }
 }

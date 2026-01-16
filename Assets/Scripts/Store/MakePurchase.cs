@@ -15,6 +15,7 @@ public class MakePurchase : MonoBehaviour
     {
         profile = LoadProgressionOrDefaults();
         RefreshUI();
+        DeleteRunResult();
     }
 
     private void RefreshUI()
@@ -107,5 +108,13 @@ public class MakePurchase : MonoBehaviour
         }
 
         else return CreateDefaultProfile();
+    }
+
+    private void DeleteRunResult()
+    {
+        string path = Path.Combine(Application.persistentDataPath, "run_result.json");
+
+        if (File.Exists(path))
+            File.Delete(path);
     }
 }

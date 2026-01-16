@@ -5,6 +5,7 @@ using UnityEngine;
 public static class HighScorePersistence
 {
     private const string HighScoreFileName = "player_high_scores.json";
+    private const string RunResultFileName = "run_result.json";
 
     public static void TryAddRun()
     {
@@ -47,10 +48,20 @@ public static class HighScorePersistence
 
     private static RunResultData LoadRunResult()
     {
-        if (!PlayerPrefs.HasKey("run_result"))
+        string path = Path.Combine(Application.persistentDataPath, RunResultFileName);
+
+        if (!File.Exists(path))
             return null;
 
-        string json = PlayerPrefs.GetString("run_result");
+        string json = File.ReadAllText(path);
+
         return JsonUtility.FromJson<RunResultData>(json);
+    }
+
+    public static void DeleteRunResult()
+    {
+        string path = Path.Combine(Application.persistentDataPath, RunResultFileName);
+        if (File.Exists(path))
+            File.Delete(path);
     }
 }

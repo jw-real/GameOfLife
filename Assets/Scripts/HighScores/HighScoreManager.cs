@@ -46,12 +46,14 @@ public class HighScoreManager : MonoBehaviour
 
         row.viewPatternButton.interactable = true;
         row.viewPatternButton.onClick.RemoveAllListeners();
-        row.viewPatternButton.onClick.AddListener(() =>
-        {
-            PlayerPrefs.SetString("view_pattern_hash", entry.patternCanonical);
-            SceneManager.LoadScene("PatternViewer");
-        });
+
+        // Bind canonical directly to the row controller
+        var rowController = row.viewPatternButton.GetComponent<HighScoreRowController>();
+        rowController.Bind(entry.patternCanonical);
+
+        row.viewPatternButton.onClick.AddListener(rowController.OnViewPatternClicked);
     }
+
 
     private void ClearRow(HighScoreRowUI row, int rank)
     {

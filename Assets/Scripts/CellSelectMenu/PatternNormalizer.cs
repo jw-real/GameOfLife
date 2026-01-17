@@ -154,27 +154,40 @@ public static class PatternNormalizer
         return sb.ToString();
     }
 
-    public static HashSet<Vector2Int> DecodeCanonical(string canonical)
+    public static bool[,] DecodeCanonicalToGrid(string canonical)
     {
-        HashSet<Vector2Int> cells = new HashSet<Vector2Int>();
-
         if (string.IsNullOrEmpty(canonical))
-            return cells;
+            return new bool[0, 0];
 
-        string[] rows = canonical.Split('|', StringSplitOptions.RemoveEmptyEntries);
+        // Split rows (SerializeGrid appends '|' per row)
+        string[] rows = canonical
+            .Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
 
-        for (int y = 0; y < rows.Length; y++)
+        if (rows.Length == 0)
+            return new bool[0, 0];
+
+        int height = rows.Length;
+        int width  = rows[0].Length;
+
+        bool[,] grid = new bool[width, height];
+
+        for (int y = 0; y < height; y++)
         {
             string row = rows[y];
 
-            for (int x = 0; x < row.Length; x++)
+            // Defensive check (should never happen if canonical is valid)
+            if (row.Length != width)
             {
-                if (row[x] == '1')
-                    cells.Add(new Vector2Int(x, y));
+                Debug.LogWarning("DecodeCanonicalToGrid: Inconsistent row width.");
+                continue;
+            }
+
+            for (int x = 0; x < width; x++)
+            {
+                grid[x, y] = row[x] == '1';
             }
         }
 
-        return cells;
+        return grid;
     }
-
 }

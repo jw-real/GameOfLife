@@ -177,8 +177,8 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 32, y: 32}
   m_Spacing: {x: 2, y: 2}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 100
 --- !u!1 &238637453
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,11 +634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6188e5d6df3fdca9289761d204eb0058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contentRoot: {fileID: 0}
-  grid: {fileID: 0}
+  contentRoot: {fileID: 238637454}
+  grid: {fileID: 150397989}
   cellPrefab: {fileID: 3553597652698480253, guid: a4e1627fbd19ddb14884dae27e2d52dd, type: 3}
   aliveColor: {r: 0.9019608, g: 0.078431375, b: 0.078431375, a: 1}
-  deadColor: {r: 0.2, g: 0.54509807, b: 0.79607844, a: 1}
+  deadColor: {r: 1, g: 1, b: 1, a: 1}
   padding: 2
 --- !u!4 &1808947080
 Transform:

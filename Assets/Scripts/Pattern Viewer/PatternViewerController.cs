@@ -14,11 +14,13 @@ public class PatternViewerController : MonoBehaviour
     [SerializeField] private Color deadColor = Color.white;
     [SerializeField] private int padding = 2;
 
-    private const string PatternHashKey = "view_pattern_hash";
+    private const string PatternHashKey = "view_pattern_hash"; // Possibly delete this
 
     void Start()
     {
+        Debug.Log("PatternViewer Start()");
         string canonical = PatternSelectionContext.SelectedPatternCanonical;
+        Debug.Log($"Canonical = {canonical}");
 
         if (string.IsNullOrEmpty(canonical))
         {
@@ -29,56 +31,48 @@ public class PatternViewerController : MonoBehaviour
         RenderPattern(canonical);
     }
 
-    private void RenderPattern(string hash)
+    private void RenderPattern(string patternCanonical)
     {
-        HashSet<Vector2Int> cells = PatternNormalizer.DecodeCanonical(hash);
+        bool[,] gridData = PatternNormalizer.DecodeCanonicalToGrid(patternCanonical);
 
-        if (cells.Count == 0)
+        int dataWidth  = gridData.GetLength(0);
+        int dataHeight = gridData.GetLength(1);
+
+        if (dataWidth == 0 || dataHeight == 0)
         {
             Debug.LogWarning("PatternViewer: Empty pattern.");
             return;
         }
 
-        // Compute bounding box
-        int minX = int.MaxValue;
-        int maxX = int.MinValue;
-        int minY = int.MaxValue;
-        int maxY = int.MinValue;
+        int width  = dataWidth  + padding * 2;
+        int height = dataHeight + padding * 2;
 
-        foreach (var c in cells)
-        {
-            if (c.x < minX) minX = c.x;
-            if (c.x > maxX) maxX = c.x;
-            if (c.y < minY) minY = c.y;
-            if (c.y > maxY) maxY = c.y;
-        }
-
-        int width  = (maxX - minX + 1) + padding * 2;
-        int height = (maxY - minY + 1) + padding * 2;
-
+        // Configure grid layout
         grid.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
         grid.constraintCount = width;
 
+        // Optional: set cell size
+        grid.cellSize = new Vector2(20f, 20f); // adjust to fit
+        grid.spacing = new Vector2(2f, 2f);
+
         ClearGrid();
 
-        // Precompute offset
-        int offsetX = -minX + padding;
-        int offsetY = -minY + padding;
-
-        // Create lookup for fast access
-        HashSet<Vector2Int> shifted = new HashSet<Vector2Int>();
-        foreach (var c in cells)
-            shifted.Add(new Vector2Int(c.x + offsetX, c.y + offsetY));
-
-        // Generate grid
+        // Render top-to-bottom
         for (int y = height - 1; y >= 0; y--)
         {
             for (int x = 0; x < width; x++)
             {
-                GameObject cell = Instantiate(cellPrefab, contentRoot);
+                GameObject cell = Instantiate(cellPrefab, grid.transform); // <-- change parent here
                 Image img = cell.GetComponent<Image>();
 
-                bool alive = shifted.Contains(new Vector2Int(x, y));
+                int dataX = x - padding;
+                int dataY = y - padding;
+
+                bool alive =
+                    dataX >= 0 && dataX < dataWidth &&
+                    dataY >= 0 && dataY < dataHeight &&
+                    gridData[dataX, dataY];
+
                 img.color = alive ? aliveColor : deadColor;
                 img.raycastTarget = false;
             }
@@ -87,7 +81,10 @@ public class PatternViewerController : MonoBehaviour
 
     private void ClearGrid()
     {
-        for (int i = contentRoot.childCount - 1; i >= 0; i--)
-            Destroy(contentRoot.GetChild(i).gameObject);
+        // Only destroy child objects, not the root
+        for (int i = grid.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(grid.transform.GetChild(i).gameObject);
+        }
     }
 }

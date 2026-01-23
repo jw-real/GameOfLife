@@ -1,3 +1,4 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,5 +50,18 @@ public class SceneChangeButtonController : MonoBehaviour
         PatternSelectionContext.Set(patternCanonical);
         NavigationContext.SetPreviousScene("Library");
         SceneManager.LoadScene("PatternViewer");
+    }
+
+    public void BackFromPatternViewer()
+    {
+        string previousScene = NavigationContext.GetPreviousScene();
+
+        if (string.IsNullOrEmpty(previousScene))
+        {
+            Debug.LogWarning("Previous scene not set. Falling back to MainMenu.");
+            previousScene = "MainMenu"; // or another safe default
+        }
+
+        SceneManager.LoadScene(previousScene);
     }
 }

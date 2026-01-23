@@ -1,0 +1,15 @@
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/bin/Release/net8.0/RleLibraryExporter
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/bin/Release/net8.0/RleLibraryExporter.deps.json
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/bin/Release/net8.0/RleLibraryExporter.runtimeconfig.json
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/bin/Release/net8.0/RleLibraryExporter.dll
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/bin/Release/net8.0/RleLibraryExporter.pdb
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.GeneratedMSBuildEditorConfig.editorconfig
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.AssemblyInfoInputs.cache
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.AssemblyInfo.cs
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.csproj.CoreCompileInputs.cache
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.sourcelink.json
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.dll
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/refint/RleLibraryExporter.dll
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.pdb
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/RleLibraryExporter.genruntimeconfig.cache
+/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/obj/Release/net8.0/ref/RleLibraryExporter.dll

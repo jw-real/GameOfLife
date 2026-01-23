@@ -7,6 +7,11 @@ public static class NavigationContext
         PreviousSceneName = sceneName;
     }
 
+    public static string GetPreviousScene()
+    {
+        return PreviousSceneName;
+    }
+
     public static void Clear()
     {
         PreviousSceneName = null;

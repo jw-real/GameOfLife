@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ya3Fl31Q9xJzaEQENi8e2nuGCxpU3HJCmKa5NaDXRytaOcVXOZAHkOv0B5Dpp+FLo64jBrnmco2VqJUP7rT7Xg==",
+  "success": true,
+  "projectFilePath": "/home/roxo-acinzentado/Unity/Game of Life/Docs/Tools/RleLibraryExporter/RleLibraryExporter.csproj",
+  "expectedPackageFiles": [
+    "/home/roxo-acinzentado/.nuget/packages/microsoft.netcore.app.runtime.linux-x64/8.0.21/microsoft.netcore.app.runtime.linux-x64.8.0.21.nupkg.sha512",
+    "/home/roxo-acinzentado/.nuget/packages/microsoft.aspnetcore.app.runtime.linux-x64/8.0.21/microsoft.aspnetcore.app.runtime.linux-x64.8.0.21.nupkg.sha512",
+    "/home/roxo-acinzentado/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.21/microsoft.netcore.app.host.linux-x64.8.0.21.nupkg.sha512"
+  ],
+  "logs": []
+}

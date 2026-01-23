@@ -11,11 +11,13 @@ public class RoundScore : MonoBehaviour
     private TextMeshProUGUI scoreNumber;   // Numeric value
 
     private const string ProgressionFileName = "run_result.json";
+    private const string ProfileFileName = "player_profile.json";
 
     private void OnEnable()
     {
         LoadAndDisplayScore();
         HighScorePersistence.TryAddRun();
+        AwardPlayerCoins();
     }
 
     private void LoadAndDisplayScore()
@@ -56,6 +58,29 @@ public class RoundScore : MonoBehaviour
         {
             // The numeric value — updated separately
             scoreNumber.text = roundScore.ToString();
+        }
+    }
+
+    private void AwardPlayerCoins()
+    {
+        string runResultPath = Path.Combine(Application.persistentDataPath, ProgressionFileName);
+        string profilePath = Path.Combine(Application.persistentDataPath, ProfileFileName);
+
+        // Load run result
+        if (File.Exists(runResultPath) && File.Exists(profilePath))
+        {
+            string runJson = File.ReadAllText(runResultPath);
+            RunResultData runResult = JsonUtility.FromJson<RunResultData>(runJson);
+
+            string profileJson = File.ReadAllText(profilePath);
+            PlayerProfileData profile = JsonUtility.FromJson<PlayerProfileData>(profileJson);
+
+            // Increment coins
+            profile.coins += runResult.roundScore;
+
+            // Save updated profile
+            string updatedProfileJson = JsonUtility.ToJson(profile, true);
+            File.WriteAllText(profilePath, updatedProfileJson);
         }
     }
 }

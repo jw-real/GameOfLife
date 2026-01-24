@@ -87,6 +87,18 @@ MonoBehaviour:
     m_Key: store
     m_Metadata:
       m_Items: []
+  - m_Id: 12315643428016128
+    m_Key: library
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Key: name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Key: cell_count
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

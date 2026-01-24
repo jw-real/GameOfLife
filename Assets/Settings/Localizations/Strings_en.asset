@@ -91,6 +91,18 @@ MonoBehaviour:
     m_Localized: Store
     m_Metadata:
       m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: Library
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: Name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: Cell Count
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

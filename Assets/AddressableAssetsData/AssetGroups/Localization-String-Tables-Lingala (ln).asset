@@ -15,11 +15,11 @@ MonoBehaviour:
   m_GroupName: Localization-String-Tables-Lingala (ln)
   m_GUID: a09905ffe0d76989cbfab860c275f7f7
   m_SerializeEntries:
-  - m_GUID: 7b04ec8bb6f071ea4bc8ff0078bef0c1
-    m_Address: Strings_ln
+  - m_GUID: 6345552c2cd7dd78a9a5a0c9de5f7124
+    m_Address: Strings_ln-CD
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale-ln
+    - Locale-ln-CD
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ef4e8c4bf71c11594bafa14833dee213, type: 2}

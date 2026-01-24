@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 570677930}
   - component: {fileID: 570677931}
   m_Layer: 5
-  m_Name: ScrollView
+  m_Name: ScrollRect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -610,6 +610,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508411639}
+  - component: {fileID: 1508411641}
+  - component: {fileID: 1508411640}
   m_Layer: 5
   m_Name: Viewport
   m_TagString: Untagged
@@ -637,6 +639,44 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 8.6224}
   m_SizeDelta: {x: 720, y: 1617.2}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1508411640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508411638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1508411641
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508411638}
+  m_CullTransparentMesh: 1
 --- !u!1 &1808947078
 GameObject:
   m_ObjectHideFlags: 0
@@ -648,6 +688,7 @@ GameObject:
   - component: {fileID: 1808947080}
   - component: {fileID: 1808947079}
   - component: {fileID: 1808947081}
+  - component: {fileID: 1808947082}
   m_Layer: 0
   m_Name: ScriptObject
   m_TagString: Untagged
@@ -700,6 +741,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae50942fa8a32bb768e23349caf34b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1808947082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808947078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80761961274e29cdb5bc97c552b17f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contentRoot: {fileID: 238637454}
+  scrollRect: {fileID: 570677931}
+  zoomSpeed: 0.1
+  pinchSpeed: 0.01
+  minScale: 0.5
+  maxScale: 3
 --- !u!1 &1888921077
 GameObject:
   m_ObjectHideFlags: 0

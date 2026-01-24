@@ -4,5 +4,4 @@ using System.Collections.Generic;
 public class LibraryTable
 {
     public List<LibraryEntry> entries;
-
 }

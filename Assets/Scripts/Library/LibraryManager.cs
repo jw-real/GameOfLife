@@ -32,7 +32,8 @@ public class LibraryManager : MonoBehaviour
     private void OnEnable()
     {
         table = LoadLibrary();
-        if (table == null)
+
+        if (table == null || table.entries == null)
             return;
 
         PopulateLibraryTable();
@@ -40,7 +41,8 @@ public class LibraryManager : MonoBehaviour
 
     private void PopulateLibraryTable()
     {
-        LibraryTable table = LoadLibrary();
+        foreach (Transform child in contentParent)
+            Destroy(child.gameObject);
 
         foreach (var entry in table.entries)
         {
@@ -64,14 +66,12 @@ public class LibraryManager : MonoBehaviour
         row.viewPatternButton.onClick.AddListener(rowController.OnViewPatternClicked);
     }
 
-
     private LibraryTable LoadLibrary()
     {
         string path = Path.Combine(Application.streamingAssetsPath, LibraryFileName);
         string json;
 
     #if UNITY_ANDROID && !UNITY_EDITOR
-        // Android requires UnityWebRequest
         using (var request = UnityEngine.Networking.UnityWebRequest.Get(path))
         {
             request.SendWebRequest();
@@ -89,7 +89,24 @@ public class LibraryManager : MonoBehaviour
         json = File.ReadAllText(path);
     #endif
 
-        return JsonUtility.FromJson<LibraryTable>(json);
-    }
+        LibraryTable table = JsonUtility.FromJson<LibraryTable>(json);
 
+        if (table == null || table.entries == null)
+        {
+            Debug.LogError("Failed to deserialize library table or entries.");
+            return null;
+        }
+
+        // ✅ SORT AFTER DERIVED FIELDS EXIST
+        table.entries.Sort((a, b) =>
+        {
+            int cellCompare = a.cellCount.CompareTo(b.cellCount);
+            if (cellCompare != 0)
+                return cellCompare;
+
+            return string.Compare(a.name, b.name, System.StringComparison.OrdinalIgnoreCase);
+        });
+
+        return table;
+    }
 }

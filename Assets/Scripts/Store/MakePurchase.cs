@@ -61,6 +61,19 @@ public class MakePurchase : MonoBehaviour
         RefreshUI();
     }
 
+    public bool TryPurchaseLibrary()
+    {
+        int cost = 2000;
+        if (profile.coins < cost) return false;
+
+        profile.coins -= cost;
+        
+        SaveProfile();
+        RefreshUI();
+
+        return true;
+    }
+
     int GetRowCost()
     {
         int purchased = profile.rows;

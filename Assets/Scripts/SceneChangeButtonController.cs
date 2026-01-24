@@ -64,4 +64,23 @@ public class SceneChangeButtonController : MonoBehaviour
 
         SceneManager.LoadScene(previousScene);
     }
+
+    public void GoToLibrary()
+    {
+        NavigationContext.SetPreviousScene("CellSelectMenu");
+        SceneManager.LoadScene("Library");
+    }
+
+    public void BackFromLibrary()
+    {
+        string previousScene = NavigationContext.GetPreviousScene();
+
+        if (string.IsNullOrEmpty(previousScene))
+        {
+            Debug.LogWarning("Previous scene not set. Falling back to MainMenu.");
+            previousScene = "MainMenu"; // or another safe default
+        }
+
+        SceneManager.LoadScene(previousScene);
+    }
 }

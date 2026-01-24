@@ -1,10 +1,16 @@
 using UnityEngine;
 using System.IO;
 using TMPro;
+using System;
 
 public class MakePurchase : MonoBehaviour
 {
     private PlayerProfileData profile;
+
+    public static event Action LibraryPurchased;
+
+    public static bool LibraryUnlocked { get; private set; }
+
 
     [SerializeField] int baseRowCost = 200;
     [SerializeField] int baseColCost = 200;
@@ -14,6 +20,8 @@ public class MakePurchase : MonoBehaviour
     void Start()
     {
         profile = LoadProgressionOrDefaults();
+        LibraryUnlocked = false;
+
         RefreshUI();
         DeleteRunResult();
     }
@@ -64,12 +72,16 @@ public class MakePurchase : MonoBehaviour
     public bool TryPurchaseLibrary()
     {
         int cost = 2000;
-        if (profile.coins < cost) return false;
+        if (profile.coins < cost)
+            return false;
 
         profile.coins -= cost;
-        
+
         SaveProfile();
         RefreshUI();
+
+        LibraryPurchased?.Invoke();
+        LibraryUnlocked = true;
 
         return true;
     }

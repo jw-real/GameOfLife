@@ -4,6 +4,7 @@ using System.IO;
 public class SessionBootstrap : MonoBehaviour
 {
     private const string ProfileFileName = "player_profile.json";
+    [SerializeField] private GameObject libraryAccessIcon;
 
     void Awake()
     {
@@ -24,5 +25,10 @@ public class SessionBootstrap : MonoBehaviour
         File.WriteAllText(path, json);
 
         Debug.Log("Session profile initialized:\n" + json);
+    }
+
+    void InitializeLibraryButtons()
+    {
+        libraryAccessIcon.SetActive(false);
     }
 }

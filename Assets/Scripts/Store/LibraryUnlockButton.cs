@@ -2,30 +2,45 @@ using UnityEngine;
 
 public class LibraryUnlockButton : MonoBehaviour
 {
-    [SerializeField] private MakePurchase makePurchases;
-    [SerializeField] private GameObject purchaseButton;
     [SerializeField] private GameObject libraryAccessIcon;
+    [SerializeField] private MakePurchase makePurchase;
 
-    private bool libraryUnlocked;
-
-    public void OnPurchaseClicked()
+    private void OnEnable()
     {
-        if (libraryUnlocked)
-            return;
-
-        if (!makePurchases.TryPurchaseLibrary())
-        {
-            Debug.Log("Insufficient currency");
-            return;
-        }
-
-        libraryUnlocked = true;
-        UpdateUI();
+        MakePurchase.LibraryPurchased += OnLibraryPurchased;
+        SyncInitialState();
     }
 
-    private void UpdateUI()
+    private void OnDisable()
     {
-        purchaseButton.SetActive(!libraryUnlocked);
-        libraryAccessIcon.SetActive(libraryUnlocked);
+        MakePurchase.LibraryPurchased -= OnLibraryPurchased;
+    }
+
+    private void OnLibraryPurchased()
+    {
+        libraryAccessIcon.SetActive(true);
+        gameObject.SetActive(false); // hide purchase button
+    }
+
+    private void SyncInitialState()
+    {
+        if (MakePurchase.LibraryUnlocked)
+        {
+            // Already unlocked earlier in this session
+            libraryAccessIcon.SetActive(true);
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            // Not yet unlocked
+            libraryAccessIcon.SetActive(false);
+            gameObject.SetActive(true);
+        }
+    }
+
+    // Called by Button OnClick
+    public void OnPurchaseClicked()
+    {
+        makePurchase.TryPurchaseLibrary();
     }
 }

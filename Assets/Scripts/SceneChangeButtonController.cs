@@ -54,6 +54,8 @@ public class SceneChangeButtonController : MonoBehaviour
 
     public void BackFromPatternViewer()
     {
+        Debug.Log("BackFromPatternViewer invoked");
+        
         string previousScene = NavigationContext.GetPreviousScene();
 
         if (string.IsNullOrEmpty(previousScene))

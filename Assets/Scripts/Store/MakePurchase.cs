@@ -7,7 +7,7 @@ public class MakePurchase : MonoBehaviour
 {
     private PlayerProfileData profile;
 
-    public static event Action LibraryPurchased;
+    public static event System.Action LibraryPurchased;
 
     public static bool LibraryUnlocked { get; private set; }
 
@@ -71,18 +71,19 @@ public class MakePurchase : MonoBehaviour
 
     public bool TryPurchaseLibrary()
     {
+        if (LibraryUnlocked) return false;
+
         int cost = 2000;
         if (profile.coins < cost)
             return false;
 
         profile.coins -= cost;
+        LibraryUnlocked = true;
 
         SaveProfile();
         RefreshUI();
 
-        LibraryPurchased?.Invoke();
-        LibraryUnlocked = true;
-
+        LibraryPurchased?.Invoke();        
         return true;
     }
 

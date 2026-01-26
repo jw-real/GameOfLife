@@ -9,6 +9,7 @@ public class SessionBootstrap : MonoBehaviour
     void Awake()
     {
         InitializeProfile();
+        InitializeLibraryButton();
     }
 
     void InitializeProfile()
@@ -27,7 +28,7 @@ public class SessionBootstrap : MonoBehaviour
         Debug.Log("Session profile initialized:\n" + json);
     }
 
-    void InitializeLibraryButtons()
+    void InitializeLibraryButton()
     {
         libraryAccessIcon.SetActive(false);
     }

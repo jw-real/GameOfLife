@@ -99,6 +99,10 @@ MonoBehaviour:
     m_Key: cell_count
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -72,6 +72,26 @@ MonoBehaviour:
     m_Localized: Point
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Localized: "Ba cr\xE9dits"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: Ba cellules
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: Nkombo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: Biblioteke
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Butiki
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

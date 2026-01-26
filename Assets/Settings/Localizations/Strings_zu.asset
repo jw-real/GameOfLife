@@ -72,6 +72,26 @@ MonoBehaviour:
     m_Localized: Umphumela
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Localized: Amakhredithi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: Amaseli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: Igama
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: Umtapo Wolwazi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Isitolo
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

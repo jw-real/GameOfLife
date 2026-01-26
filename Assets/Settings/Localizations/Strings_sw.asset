@@ -69,6 +69,26 @@ MonoBehaviour:
     m_Localized: Alama
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Localized: Mikopo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: Seli
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: Jina
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: Maktaba
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Duka
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

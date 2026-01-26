@@ -68,6 +68,26 @@ MonoBehaviour:
     m_Localized: "Pontua\xE7\xE3o"
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Localized: "Cr\xE9ditos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: "C\xE9lulas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: Nome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: Biblioteca
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Loja
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

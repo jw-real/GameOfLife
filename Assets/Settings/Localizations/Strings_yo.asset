@@ -75,6 +75,26 @@ MonoBehaviour:
     m_Localized: O wole
     m_Metadata:
       m_Items: []
+  - m_Id: 13129659331186688
+    m_Localized: "\xC0w\u1ECDn kirediti"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315647446159360
+    m_Localized: "\xC0w\u1ECDn s\u1EB9\u0301\u1EB9\u0300l\xEC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315645839740928
+    m_Localized: "Or\xFAk\u1ECD"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12315643428016128
+    m_Localized: "Il\xE9 \xECk\xE0w\xE9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9089343611539456
+    m_Localized: Ile itaja
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

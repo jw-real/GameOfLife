@@ -22,7 +22,7 @@ public class MakePurchase : MonoBehaviour
     void Awake()
     {
         profile = LoadProgressionOrDefaults();
-        LibraryUnlocked = false;
+        //LibraryUnlocked = false;
     }
     void OnEnable()
     {

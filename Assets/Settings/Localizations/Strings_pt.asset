@@ -88,6 +88,30 @@ MonoBehaviour:
     m_Localized: Loja
     m_Metadata:
       m_Items: []
+  - m_Id: 8795647036952576
+    m_Localized: Linha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795654116937728
+    m_Localized: Coluna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Localized: "C\xE9lula"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: "Ver padr\xE3o"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: "Pontua\xE7\xF5es mais altas"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: "Classifica\xE7\xE3o"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -95,6 +95,30 @@ MonoBehaviour:
     m_Localized: Ile itaja
     m_Metadata:
       m_Items: []
+  - m_Id: 8795647036952576
+    m_Localized: "\xCCl\xE0"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795654116937728
+    m_Localized: "\xD2p\xF3"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Localized: "S\u1EB9\u0301\u1EB9\u0300l\xEC"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: "Wo \xC0p\u1EB9\u1EB9r\u1EB9"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: "\xC0w\u1ECDn \xC0m\xEC G\xEDga"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: "Ip\xF2"
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

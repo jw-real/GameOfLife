@@ -237,7 +237,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 072724b2c62f7293496d040a6c40f9d7, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -354,7 +354,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: 450, y: 89}
+  m_SizeDelta: {x: 550, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277568676
 MonoBehaviour:
@@ -459,10 +459,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 277568674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d39c66781a3de1d94f2bc301a93cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
+  purchaseType: 1
+  makePurchase: {fileID: 6536006}
+  label: {fileID: 1789062326}
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:ad14077391353320abc161814a62d89f
     m_TableEntryReference:
@@ -471,22 +474,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1789062326}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: SetText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -528,7 +515,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -150}
-  m_SizeDelta: {x: 450, y: 89}
+  m_SizeDelta: {x: 550, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291168545
 MonoBehaviour:
@@ -633,10 +620,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 291168543}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d39c66781a3de1d94f2bc301a93cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
+  purchaseType: 0
+  makePurchase: {fileID: 6536006}
+  label: {fileID: 1317216501}
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:ad14077391353320abc161814a62d89f
     m_TableEntryReference:
@@ -645,22 +635,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1317216501}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: SetText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -812,8 +786,8 @@ GameObject:
   - component: {fileID: 726501261}
   - component: {fileID: 726501260}
   - component: {fileID: 726501259}
-  - component: {fileID: 726501258}
   - component: {fileID: 726501263}
+  - component: {fileID: 726501264}
   m_Layer: 5
   m_Name: PurchaseLibrary
   m_TagString: Untagged
@@ -821,46 +795,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &726501258
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726501257}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_StringReference:
-    m_TableReference:
-      m_TableCollectionName: GUID:ad14077391353320abc161814a62d89f
-    m_TableEntryReference:
-      m_KeyId: 12315643428016128
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 82570865}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: SetText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
-  references:
-    version: 2
-    RefIds: []
 --- !u!114 &726501259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,7 +907,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 89}
+  m_SizeDelta: {x: 550, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &726501263
 MonoBehaviour:
@@ -989,6 +923,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAccessIcon: {fileID: 6166111534725348379, guid: d0d64201ab3513e93a2bb2e719aefea7, type: 3}
   makePurchase: {fileID: 6536006}
+--- !u!114 &726501264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726501257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d39c66781a3de1d94f2bc301a93cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  purchaseType: 3
+  makePurchase: {fileID: 6536006}
+  label: {fileID: 82570865}
+  localizedLabel:
+    m_TableReference:
+      m_TableCollectionName: GUID:ad14077391353320abc161814a62d89f
+    m_TableEntryReference:
+      m_KeyId: 12315643428016128
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &1025198071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,7 +1299,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 072724b2c62f7293496d040a6c40f9d7, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -1436,7 +1397,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -450}
-  m_SizeDelta: {x: 450, y: 89}
+  m_SizeDelta: {x: 550, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1441881844
 MonoBehaviour:
@@ -1541,10 +1502,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441881842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 95d39c66781a3de1d94f2bc301a93cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StringReference:
+  purchaseType: 2
+  makePurchase: {fileID: 6536006}
+  label: {fileID: 1964337258}
+  localizedLabel:
     m_TableReference:
       m_TableCollectionName: GUID:ad14077391353320abc161814a62d89f
     m_TableEntryReference:
@@ -1553,22 +1517,6 @@ MonoBehaviour:
     m_FallbackState: 0
     m_WaitForCompletion: 0
     m_LocalVariables: []
-  m_FormatArguments: []
-  m_UpdateString:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1964337258}
-        m_TargetAssemblyTypeName: TMPro.TextMeshProUGUI, Unity.TextMeshPro
-        m_MethodName: SetText
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
   references:
     version: 2
     RefIds: []
@@ -1610,7 +1558,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -600}
-  m_SizeDelta: {x: 450, y: 89}
+  m_SizeDelta: {x: 550, y: 89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1631836382
 MonoBehaviour:
@@ -1803,7 +1751,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Purchase Column
+  m_text: Column
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
   m_sharedMaterial: {fileID: 3983106694442125006, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
@@ -1822,7 +1770,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 072724b2c62f7293496d040a6c40f9d7, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -2122,7 +2070,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Purchase Cell
+  m_text: Cell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
   m_sharedMaterial: {fileID: 3983106694442125006, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
@@ -2141,7 +2089,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 072724b2c62f7293496d040a6c40f9d7, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

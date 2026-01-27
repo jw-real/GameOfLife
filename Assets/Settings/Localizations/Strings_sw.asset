@@ -89,6 +89,30 @@ MonoBehaviour:
     m_Localized: Duka
     m_Metadata:
       m_Items: []
+  - m_Id: 8795654116937728
+    m_Localized: Safu wima
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795647036952576
+    m_Localized: Safu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Localized: Kiini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: Tazama Muundo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: Alama za Juu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: Cheo
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -91,6 +91,30 @@ MonoBehaviour:
     m_Localized: Chitoro
     m_Metadata:
       m_Items: []
+  - m_Id: 8795647036952576
+    m_Localized: Mutsetse
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795654116937728
+    m_Localized: Koramu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Localized: Sero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: Ona Patani
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: Zvibodzwa zvepamusoro
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: Chinzvimbo
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

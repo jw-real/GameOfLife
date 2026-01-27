@@ -90,6 +90,30 @@ MonoBehaviour:
     m_Localized: Tienda
     m_Metadata:
       m_Items: []
+  - m_Id: 8795647036952576
+    m_Localized: Fila
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795654116937728
+    m_Localized: Columna
+    m_Metadata:
+      m_Items: []
+  - m_Id: 8795658273492992
+    m_Localized: "Cel\xFAla"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9083286101233664
+    m_Localized: "Ver patr\xF3n"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9087482196201472
+    m_Localized: Puntuaciones altas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: Rango
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

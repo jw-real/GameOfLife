@@ -11,17 +11,21 @@ public class MakePurchase : MonoBehaviour
 
     public static bool LibraryUnlocked { get; private set; }
 
+    public static event Action PricesChanged;
+
 
     [SerializeField] int baseRowCost = 200;
     [SerializeField] int baseColCost = 200;
     [SerializeField] int baseCellCost = 150;
     [SerializeField] private TextMeshProUGUI coinsText;
 
-    void Start()
+    void Awake()
     {
         profile = LoadProgressionOrDefaults();
         LibraryUnlocked = false;
-
+    }
+    void OnEnable()
+    {
         RefreshUI();
         DeleteRunResult();
     }
@@ -30,6 +34,8 @@ public class MakePurchase : MonoBehaviour
     {
         if (coinsText != null)
             coinsText.text = profile.coins.ToString();
+
+        PricesChanged?.Invoke();
     }
 
 
@@ -87,19 +93,19 @@ public class MakePurchase : MonoBehaviour
         return true;
     }
 
-    int GetRowCost()
+    public int GetRowCost()
     {
         int purchased = profile.rows;
         return Mathf.RoundToInt(baseRowCost * (1f + purchased * 0.35f));
     }
 
-    int GetColumnCost()
+    public int GetColumnCost()
     {
         int purchased = profile.cols;
         return Mathf.RoundToInt(baseColCost * (1f + purchased * 0.35f));
     }
 
-    int GetCellCost()
+    public int GetCellCost()
     {
         int purchased = profile.maxSelectable;
         return Mathf.RoundToInt(baseCellCost * (1f + purchased * 0.25f));

@@ -68,15 +68,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 8795647036952576
-    m_Localized: Purchase Row
+    m_Localized: Row
     m_Metadata:
       m_Items: []
   - m_Id: 8795654116937728
-    m_Localized: Purchase Column
+    m_Localized: Column
     m_Metadata:
       m_Items: []
   - m_Id: 8795658273492992
-    m_Localized: Purchase Cell
+    m_Localized: Cell
     m_Metadata:
       m_Items: []
   - m_Id: 9083286101233664
@@ -105,6 +105,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13129659331186688
     m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13465828359213056
+    m_Localized: Rank
     m_Metadata:
       m_Items: []
   references:

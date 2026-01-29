@@ -34,6 +34,7 @@ public class GameConfig : MonoBehaviour
 
         //remainingSelectable = maxSelectable;
         UpdateSelectionUI();
+        Debug.Log($"[CellSelectMenu] Start. LibraryUnlocked={MakePurchase.LibraryUnlocked}");
     }
 
     // -------------------------------

@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -22,3 +22,4 @@ public class CellAnimationBridge : MonoBehaviour
         cell.SetAlive(animator.GetBool("IsAlive"));
     }
 }
+*/

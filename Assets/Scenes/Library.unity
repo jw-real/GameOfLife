@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 10361463}
   - component: {fileID: 10361465}
   - component: {fileID: 10361464}
+  - component: {fileID: 10361466}
   m_Layer: 5
   m_Name: RowsContainer
   m_TagString: Untagged
@@ -196,6 +197,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &10361466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10361462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d46f27128baa958b18e59a776d6b2fbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &87106522
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,7 +727,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cell Count
+  m_text: Cells
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
   m_sharedMaterial: {fileID: 3983106694442125006, guid: a7dd108a85671172d8619325bbdf9aeb, type: 2}
@@ -1883,9 +1896,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d2a5a654a1f38388599243bde5d040, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rows: []
-  libraryRowPrefab: {fileID: 7548587732565841887, guid: c75702b753bd16264850dde7026d1ab1, type: 3}
   contentParent: {fileID: 10361463}
+  rowPrefab: {fileID: 7548587732565841887, guid: c75702b753bd16264850dde7026d1ab1, type: 3}
+  libraryFileName: pattern_library_truncated_1.json
 --- !u!1 &2016624711
 GameObject:
   m_ObjectHideFlags: 0

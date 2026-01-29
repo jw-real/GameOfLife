@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class SimulationBackgroundApplier : MonoBehaviour
 {
@@ -9,8 +9,9 @@ public class SimulationBackgroundApplier : MonoBehaviour
         if (targetCamera == null)
             targetCamera = Camera.main;
 
-        var theme = ThemeManager.Instance.CurrentTheme;
-        targetCamera.backgroundColor = theme.DeadColor;
+        //var theme = ThemeManager.Instance.CurrentTheme;
+        //targetCamera.backgroundColor = theme.DeadColor;
         // or theme.SimulationBackgroundColor if distinct
     }
 }
+*/

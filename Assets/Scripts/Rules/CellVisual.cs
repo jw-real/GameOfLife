@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
@@ -34,4 +34,4 @@ public class CellVisual : MonoBehaviour
             ? ThemeManager.Instance.CurrentTheme.AliveColor
             : ThemeManager.Instance.CurrentTheme.DeadColor;
     }
-}
+}*/

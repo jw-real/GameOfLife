@@ -1,112 +1,105 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using TMPro;
+using UnityEngine.Networking;
 
 public class LibraryManager : MonoBehaviour
 {
-    private const string LibraryFileName = "pattern_library_truncated_1.json";
+    [Header("UI References")]
+    [SerializeField] private Transform contentParent;
+    [SerializeField] private GameObject rowPrefab;
 
-    [System.Serializable]
-    public class LibraryRowUI
-    {
-        public TextMeshProUGUI nameText;
-        public TextMeshProUGUI cellCountText;
-        public Button viewPatternButton;
-    }
-
-    [Header("UI Rows (Size = 35)")]
-    [SerializeField]
-    private List<LibraryRowUI> rows = new List<LibraryRowUI>();
-
-    [SerializeField]
-    private GameObject libraryRowPrefab;
-
-    [SerializeField]
-    private Transform contentParent;
-
-    private LibraryTable table;
+    [Header("Data")]
+    [SerializeField] private string libraryFileName = "pattern_library_truncated_1.json";
 
     private void OnEnable()
     {
-        table = LoadLibrary();
-
-        if (table == null || table.entries == null)
-            return;
-
-        PopulateLibraryTable();
+        Debug.Log("[LibraryManager] OnEnable called");
+        StartCoroutine(LoadLibraryCoroutine());
     }
 
-    private void PopulateLibraryTable()
+    private IEnumerator LoadLibraryCoroutine()
     {
-        foreach (Transform child in contentParent)
-            Destroy(child.gameObject);
+        string path = Path.Combine(Application.streamingAssetsPath, libraryFileName);
 
-        foreach (var entry in table.entries)
+#if UNITY_EDITOR || UNITY_STANDALONE
+        path = "file://" + path;
+#endif
+
+        Debug.Log($"[LibraryManager] StreamingAssetsPath: {Application.streamingAssetsPath}");
+        Debug.Log($"[LibraryManager] Full path exists check: {path}");
+        Debug.Log($"[LibraryManager] Requesting library from: {path}");
+
+        using (UnityWebRequest request = UnityWebRequest.Get(path))
         {
-            GameObject rowGO = Instantiate(libraryRowPrefab, contentParent);
-            LibraryRowController rowController = rowGO.GetComponent<LibraryRowController>();
-            rowController.Bind(entry);
-        }
-    }
+            Debug.Log($"[LibraryManager] Application.streamingAssetsPath = {Application.streamingAssetsPath}");
 
-    private void BindRow(LibraryRowUI row, LibraryEntry entry)
-    {
-        row.nameText.text = entry.name;
-        row.cellCountText.text = entry.cellCount.ToString();
+            yield return request.SendWebRequest();
 
-        row.viewPatternButton.interactable = true;
-        row.viewPatternButton.onClick.RemoveAllListeners();
-
-        var rowController = row.viewPatternButton.GetComponent<LibraryRowController>();
-        rowController.Bind(entry);
-
-        row.viewPatternButton.onClick.AddListener(rowController.OnViewPatternClicked);
-    }
-
-    private LibraryTable LoadLibrary()
-    {
-        string path = Path.Combine(Application.streamingAssetsPath, LibraryFileName);
-        string json;
-
-    #if UNITY_ANDROID && !UNITY_EDITOR
-        using (var request = UnityEngine.Networking.UnityWebRequest.Get(path))
-        {
-            request.SendWebRequest();
-            while (!request.isDone) { }
-
-            if (request.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
+            if (request.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError($"Failed to load library: {request.error}");
-                return null;
+                Debug.LogError($"[LibraryManager] Failed to load library: {request.error}");
+                yield break;
             }
 
-            json = request.downloadHandler.text;
+            string json = request.downloadHandler.text;
+
+            Debug.Log($"[LibraryManager] Library JSON loaded ({json.Length} chars)");
+
+            LibraryWrapper wrapper;
+            try
+            {
+                wrapper = JsonUtility.FromJson<LibraryWrapper>(json);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError($"[LibraryManager] JSON Parse Exception: {e.Message}");
+                yield break;
+            }
+
+            if (wrapper == null || wrapper.entries == null)
+            {
+                Debug.LogError("[LibraryManager] Parsed library is null or missing entries");
+                yield break;
+            }
+
+            Debug.Log($"[LibraryManager] Parsed {wrapper.entries.Count} library entries");
+
+            PopulateLibraryTable(wrapper.entries);
         }
-    #else
-        json = File.ReadAllText(path);
-    #endif
+    }
 
-        LibraryTable table = JsonUtility.FromJson<LibraryTable>(json);
+    private void PopulateLibraryTable(List<LibraryEntry> entries)
+    {
+        Debug.Log("[LibraryManager] Populating library table");
 
-        if (table == null || table.entries == null)
+        foreach (Transform child in contentParent)
         {
-            Debug.LogError("Failed to deserialize library table or entries.");
-            return null;
+            Destroy(child.gameObject);
         }
 
-        // ✅ SORT AFTER DERIVED FIELDS EXIST
-        table.entries.Sort((a, b) =>
+        foreach (LibraryEntry entry in entries)
         {
-            int cellCompare = a.cellCount.CompareTo(b.cellCount);
-            if (cellCompare != 0)
-                return cellCompare;
+            GameObject rowGO = Instantiate(rowPrefab, contentParent);
+            LibraryRowController controller = rowGO.GetComponent<LibraryRowController>();
 
-            return string.Compare(a.name, b.name, System.StringComparison.OrdinalIgnoreCase);
-        });
+            if (controller == null)
+            {
+                Debug.LogError("[LibraryManager] Row prefab missing LibraryRowController");
+                continue;
+            }
 
-        return table;
+            controller.Bind(entry);
+        }
+
+        Debug.Log("[LibraryManager] Library table population complete");
+    }
+
+    // JSON wrapper for JsonUtility
+    [System.Serializable]
+    private class LibraryWrapper
+    {
+        public List<LibraryEntry> entries;
     }
 }

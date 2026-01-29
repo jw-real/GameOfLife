@@ -77,14 +77,25 @@ public class MakePurchase : MonoBehaviour
 
     public bool TryPurchaseLibrary()
     {
-        if (LibraryUnlocked) return false;
+        Debug.Log($"[LibraryPurchase] Attempt. Coins={profile.coins}");
+
+        if (LibraryUnlocked) 
+        {
+            Debug.Log("[LibraryPurchase] Already unlocked.");   
+            return false;
+        }
 
         int cost = 2000;
         if (profile.coins < cost)
+        {
+            Debug.Log("[LibraryPurchase] Not enough coins.");
             return false;
+        }
 
         profile.coins -= cost;
         LibraryUnlocked = true;
+
+        Debug.Log("[LibraryPurchase] SUCCESS. LibraryUnlocked=true");
 
         SaveProfile();
         RefreshUI();

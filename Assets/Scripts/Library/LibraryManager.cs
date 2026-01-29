@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
 
 public class LibraryManager : MonoBehaviour
 {
@@ -65,6 +66,12 @@ public class LibraryManager : MonoBehaviour
             }
 
             Debug.Log($"[LibraryManager] Parsed {wrapper.entries.Count} library entries");
+
+            // --- LINQ sort: smallest to largest by cellCount ---
+            wrapper.entries = wrapper.entries
+                .OrderBy(e => e.cellCount)
+                .ThenBy(e => e.name) // optional secondary sort
+                .ToList();
 
             PopulateLibraryTable(wrapper.entries);
         }
